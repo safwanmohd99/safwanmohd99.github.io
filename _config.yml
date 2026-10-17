@@ -1,0 +1,5 @@
+# GitHub Pages settings: publish the plain HTML as-is, but never publish these files
+exclude:
+  - CLAUDE.md
+  - README.md
+  - _templates

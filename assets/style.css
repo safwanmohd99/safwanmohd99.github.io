@@ -81,6 +81,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
 .portrait .status{position:absolute;left:12px;bottom:12px;right:12px;background:rgba(21,19,15,.78);backdrop-filter:blur(8px);color:var(--paper);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
 .portrait .status i{width:8px;height:8px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+.hero-row .portrait{aspect-ratio:auto;width:100%;min-height:420px}
 .hero-row .lead{max-width:460px}
 .hero-row .cta{display:flex;flex-direction:column;gap:12px;align-items:stretch}
 
@@ -354,7 +355,7 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
   .wrap{padding:0 16px}
   .hero{padding-top:44px}
   .hero-row{grid-template-columns:1fr;gap:28px;margin-top:36px;padding-bottom:52px}
-  .hero-row .portrait{max-width:300px}
+  .hero-row .portrait{max-width:300px;aspect-ratio:4/5;min-height:0}
   .hero-facts{grid-template-columns:1fr}
   .fact:nth-child(odd){border-right:0}
   .fact:nth-child(even){padding-left:0}

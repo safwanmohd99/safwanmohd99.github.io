@@ -244,8 +244,25 @@ details p{color:var(--muted);padding:0 60px 26px 0}
 .svc .intro+.intro{margin-top:14px}
 .svc-photo{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;max-width:420px}
 .svc-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.also{padding:40px 0 0;color:var(--muted);max-width:820px}
-.also b{color:var(--ink);font-weight:600}
+.extras{margin:72px 0 110px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(28px,4vw,48px)}
+.extras-head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:36px}
+.extras-head h2{font-size:clamp(30px,3.6vw,44px);margin-bottom:10px}
+.extras-head p{color:var(--muted);max-width:520px}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:var(--ink);color:#fff}
+.btn-wa svg{width:20px;height:20px;fill:currentColor}
+.extras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.extra{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px;text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s}
+.extra:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px rgba(21,19,15,.08)}
+.extra-ico{width:48px;height:48px;border-radius:14px;background:var(--ink);display:grid;place-items:center;margin-bottom:18px}
+.extra-ico svg{width:24px;height:24px;stroke:var(--accent)}
+.extra h3{font-size:19px;letter-spacing:-.02em;line-height:1.2;margin-bottom:8px}
+.extra p{color:var(--muted);font-size:15px;flex:1}
+.extra-cta{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:14px;font-weight:600;color:var(--accent-ink)}
+.extra-cta svg{width:15px;height:15px;transition:transform .2s}
+.extra:hover .extra-cta svg{transform:translateX(3px)}
+@media (max-width:1000px){.extras-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.extras-grid{grid-template-columns:1fr}.extras{margin:52px 0 76px}.btn-wa{width:100%;justify-content:center}}
 .ticks-dark,.ticks-dark li{border-color:var(--line-dark)!important}
 .steps-dark .step{border-color:var(--paper)}
 .steps-dark .step p{color:var(--muted-dark)}

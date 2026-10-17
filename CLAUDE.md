@@ -18,6 +18,12 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Photo: `assets/photo.jpg`. Pages fall back to an "S" monogram if it's missing.
 - Contact form posts to FormSubmit (`formsubmit.co/ajax/safwan031231@gmail.com`).
 
+## Pages & URLs
+- Real pages: `/`, `/services/`, `/about/`, `/contact/` (the only contact form), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
+- Never link to `#contact`; all CTAs go to `/contact/`. YouTube: https://www.youtube.com/@safwan.99
+- Old WordPress URLs (`/faq/...`, `/faq-category/...`, `/category/...`, `/author/...`, old `/blog/<old-slug>/`, `/feed/`) are tiny redirect pages (meta refresh + canonical + noindex). Don't delete them. `sitemap_index.xml` points to `sitemap.xml`.
+- Contact form uses FormSubmit; it must be activated once from the email FormSubmit sends to safwan031231@gmail.com.
+
 ## Design
 Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1F`. Fonts: Inter Tight (text) + Instrument Serif italic for highlighted words (`<em>` inside headings). Keep one accent word per heading.
 

@@ -29,7 +29,13 @@ if (form) {
     try {
       const res = await fetch(form.action, {method: 'POST', headers: {'Accept': 'application/json'}, body: new FormData(form)});
       const data = await res.json();
-      if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message || 'Failed');
+      if (!res.ok || data.success === 'false' || data.success === false) {
+        // FormSubmit explains its own problems (e.g. "needs activation"), so show that when it gives one
+        msg.textContent = (data.message ? data.message + ' ' : '') + 'You can also message me on WhatsApp: +91 79076 78846.';
+        msg.className = 'msg err';
+        btn.disabled = false; btn.firstChild.textContent = 'Send message ';
+        return;
+      }
       form.reset();
       msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
       msg.className = 'msg ok';

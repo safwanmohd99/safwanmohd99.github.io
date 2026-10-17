@@ -1,6 +1,15 @@
 # Mohammed Safwan — personal website
 
-Owner: Mohammed Safwan (Kerala-based freelance digital marketer). He has no coding knowledge, so explain everything in plain, simple language and do the technical work for him.
+Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in plain, simple language and do the technical work for him. Live at https://safwandigital.com (domain on Hostinger; that Hostinger account also hosts his client sites — never touch them).
+
+## Positioning (keep consistent everywhere)
+- Full-time digital marketer at "a digital marketing agency in Bangalore" (do NOT name the agency), working remotely from Palakkad, Kerala.
+- Freelance on the side: mainly 1–2 hour consultations; full projects only rarely. Never call him a full-time freelancer.
+- In digital marketing since 2021 (BA English → academy course → self-taught via agency, in-house, freelance).
+- Focus: B2B services + healthcare (NMC guidelines). Markets: Kerala/India, UAE, Saudi Arabia, GCC. No ecommerce.
+- SEO target: "freelance digital marketer in Kerala", "digital marketer in Kerala", "digital marketing consultant Kerala".
+- No client results/numbers on the site until he provides real ones.
+- Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services). Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
 
 ## How the site works
 - Plain HTML/CSS/JS. No build step, no Node. Shared styles in `assets/style.css`, shared script in `assets/main.js`, icons in `assets/icons.svg` (use `<svg><use href="/assets/icons.svg#arrow"/></svg>`).

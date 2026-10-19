@@ -17,6 +17,13 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.
 }), {threshold: .15}) : null;
 document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 
+// about page cards: let the hover glow follow the cursor
+if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.focus').forEach(card => card.addEventListener('pointermove', e => {
+  const r = card.getBoundingClientRect();
+  card.style.setProperty('--x', e.clientX - r.left + 'px');
+  card.style.setProperty('--y', e.clientY - r.top + 'px');
+}));
+
 // contact form: sends to email via FormSubmit without leaving the page
 const form = document.getElementById('contactForm');
 if (form) {

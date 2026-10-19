@@ -162,7 +162,11 @@ a.row:hover .arr svg{transform:rotate(0)}
 
 /* focus cards */
 .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.focus{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+.focus{position:relative;isolation:isolate;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px;transition:translate .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+/* soft orange glow that follows the cursor, plus a glassy lift on hover */
+.focus::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(240px circle at var(--x,50%) var(--y,0%),rgba(255,90,31,.24),transparent 70%);opacity:0;transition:opacity .35s}
+.focus:hover{translate:0 -4px;border-color:rgba(255,90,31,.35);box-shadow:0 22px 44px -24px rgba(21,19,15,.28),inset 0 1px 0 rgba(255,255,255,.85)}
+.focus:hover::before{opacity:1}
 .focus .n{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--accent)}
 .focus h3{font-size:26px;margin:14px 0 10px}
 .focus p{color:var(--muted);font-size:16px}

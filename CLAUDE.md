@@ -37,7 +37,7 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
    ```
    Every post gets a thumbnail at `blog/<slug>/cover.jpg` (1200×900): copy `_templates/blog-cover.html`, fill the placeholders (short title with one `<em>` word, category, font size, pick one of Safwan's photos), serve the repo root locally and screenshot it at 1200×900 with headless Chromium. Use it in the card as `<div class="cover"><img src="/blog/<slug>/cover.jpg" alt="Post title" width="1200" height="900" loading="lazy"></div>`, and as the post's `og:image` and schema `image`.
    The visible FAQ must use the exact same question and answer text as the FAQPage schema (Google requires it). Use `<div class="faq"><details><summary>Question</summary><p>Answer</p></details>…</div>`.
-4. Add the URL to `sitemap.xml`.
+4. Add the URL to `sitemap.xml` and to the "Blog posts" list in `llms.txt` (newest first).
 5. Show Safwan the draft first. Publish (commit + push) only after he says yes.
 
 ## Writing voice

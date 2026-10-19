@@ -63,6 +63,13 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .hero{padding:72px 0 0}
 .hero h1{font-size:clamp(46px,8.4vw,124px);line-height:.96;letter-spacing:-.05em;max-width:1100px}
 .hero h1 em{letter-spacing:-.02em}
+/* hero headline reveal: words rise in, then the accent word gets a hand-drawn underline */
+.h-anim .w{display:inline-block;animation:w-in .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.08s + var(--i)*.07s)}
+.h-anim .scribble{position:absolute;left:-2%;bottom:-.06em;width:104%;height:.2em;overflow:visible;pointer-events:none}
+.h-anim .w:has(.scribble){position:relative}
+.h-anim .scribble path{fill:none;stroke:var(--accent);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw .8s cubic-bezier(.6,0,.2,1) .95s forwards}
+@keyframes w-in{from{opacity:0;transform:translateY(.45em)}to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
 .hero-row{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:stretch;margin-top:56px;padding-bottom:72px}
 .hero-side{display:flex;flex-direction:column;justify-content:space-between;gap:32px}
 .hero-side .lead{max-width:640px!important;font-size:clamp(18px,1.7vw,21px)}
@@ -383,4 +390,6 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
   *{transition:none!important;scroll-behavior:auto!important}
   .marquee .track{animation:none}
   .reveal{opacity:1;transform:none}
+  .h-anim .w{animation:none}
+  .h-anim .scribble path{animation:none;stroke-dashoffset:0}
 }

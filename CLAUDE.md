@@ -20,7 +20,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Contact form posts to FormSubmit using its random-string alias (`formsubmit.co/ajax/1a269593e7568d51375bdcc6d6347187`, delivers to safwan031231@gmail.com) so the email is not exposed in the form. Spam traps: `_honey` honeypot, `_blacklist` phrases, 4-second time trap and phone digit check in `assets/main.js`.
 
 ## Pages & URLs
-- Real pages: `/`, `/services/`, `/about/`, `/contact/` (the only contact form), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
+- Real pages: `/`, `/services/`, `/portfolio/` (case studies; built from data in the page, images in `assets/portfolio/<case-id>/NN.webp`), `/about/`, `/contact/` (the only contact form), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
 - Never link to `#contact`; all CTAs go to `/contact/`. YouTube: https://www.youtube.com/@safwan.99
 - Old WordPress URLs (`/faq/...`, `/faq-category/...`, `/category/...`, `/author/...`, old `/blog/<old-slug>/`, `/feed/`) are tiny redirect pages (meta refresh + canonical + noindex). Don't delete them. `sitemap_index.xml` points to `sitemap.xml`.
 - Contact form uses FormSubmit; it must be activated once from the email FormSubmit sends to safwan031231@gmail.com.

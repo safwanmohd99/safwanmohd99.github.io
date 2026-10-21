@@ -24,6 +24,73 @@ if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.focus').fo
   card.style.setProperty('--y', e.clientY - r.top + 'px');
 }));
 
+// portfolio: filters, case study pop-up, image viewer, count-up numbers
+const pfGrid = document.querySelector('.pf-grid');
+if (pfGrid) {
+  const cases = [...pfGrid.querySelectorAll('.cs')];
+  document.querySelectorAll('.pf-filter').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.pf-filter').forEach(b => { b.classList.toggle('on', b === btn); b.setAttribute('aria-pressed', b === btn); });
+    const f = btn.dataset.filter;
+    cases.forEach(c => c.classList.toggle('out', f !== 'all' && !c.dataset.tags.split(' ').includes(f)));
+  }));
+
+  const dlg = document.querySelector('.cs-dialog'), dBody = dlg.querySelector('.cs-d-body');
+  const openCase = cs => {
+    dlg.querySelector('.cs-d-where').textContent = cs.querySelector('.cs-where').textContent;
+    dlg.querySelector('h2').textContent = cs.querySelector('h3').textContent;
+    const r = cs.querySelector('.cs-result');
+    dlg.querySelector('.cs-d-result').innerHTML = r.innerHTML;
+    dBody.innerHTML = cs.querySelector('.cs-body').innerHTML;
+    dBody.querySelectorAll('.cs-tabs button').forEach(b => b.addEventListener('click', () => {
+      dBody.querySelectorAll('.cs-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+      dBody.querySelectorAll('.cs-panel').forEach(p => p.hidden = p.dataset.panel !== b.dataset.tab);
+    }));
+    dlg.showModal(); dlg.scrollTop = 0;
+    history.replaceState(null, '', '#' + cs.id);
+  };
+  cases.forEach(cs => {
+    const card = cs.querySelector('.cs-card');
+    card.addEventListener('click', () => openCase(cs));
+    if (matchMedia('(hover: hover)').matches) card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--x', e.clientX - r.left + 'px'); card.style.setProperty('--y', e.clientY - r.top + 'px');
+    });
+  });
+  dlg.querySelector('.cs-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', () => history.replaceState(null, '', location.pathname));
+  const fromHash = cases.find(c => '#' + c.id === location.hash);
+  if (fromHash) openCase(fromHash);
+
+  const lb = document.querySelector('.cs-lightbox'), lbImg = lb.querySelector('img');
+  document.addEventListener('click', e => {
+    const img = e.target.closest('.cs-gallery img, .pf-f-gallery img');
+    if (!img) return;
+    lbImg.src = img.src; lbImg.alt = img.alt; lb.hidden = false;
+    (dlg.open ? dlg : document.body).appendChild(lb);
+  });
+  lb.addEventListener('click', () => { lb.hidden = true; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) { e.preventDefault(); lb.hidden = true; } });
+
+  const feat = document.querySelector('.pf-feature');
+  if (feat) {
+    const run = () => {
+      feat.classList.add('in');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      feat.querySelectorAll('[data-count]').forEach(el => {
+        const end = +el.dataset.count, dec = +(el.dataset.dec || 0), suf = el.dataset.suf || '', t0 = performance.now();
+        const step = now => { const p = Math.min(1, (now - t0) / 1200), v = end * (1 - Math.pow(1 - p, 3));
+          el.textContent = v.toFixed(dec) + suf; if (p < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step);
+      });
+    };
+    if ('IntersectionObserver' in window) {
+      const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); o.disconnect(); } }, {threshold: .3});
+      o.observe(feat);
+    } else run();
+  }
+}
+
 // contact form: sends to email via FormSubmit without leaving the page
 const form = document.getElementById('contactForm');
 if (form) {

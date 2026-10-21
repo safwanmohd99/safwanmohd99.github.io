@@ -28,8 +28,23 @@ if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.focus').fo
 const form = document.getElementById('contactForm');
 if (form) {
   const msg = document.getElementById('formMsg');
+  const openedAt = Date.now();
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    // spam traps: bots fill the hidden field or submit within a couple of seconds of the page loading
+    if (form.elements._honey.value || Date.now() - openedAt < 4000) {
+      form.reset();
+      msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
+      msg.className = 'msg ok';
+      return;
+    }
+    const digits = form.elements.phone.value.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) {
+      msg.textContent = 'Please enter a valid phone or WhatsApp number (at least 10 digits).';
+      msg.className = 'msg err';
+      form.elements.phone.focus();
+      return;
+    }
     const btn = form.querySelector('button');
     btn.disabled = true; btn.firstChild.textContent = 'Sending… ';
     msg.className = 'msg';

@@ -29,6 +29,14 @@ const form = document.getElementById('contactForm');
 if (form) {
   const msg = document.getElementById('formMsg');
   const openedAt = Date.now();
+  // simple sum puzzle; the field has no name, so the answer is never emailed
+  const puzzle = document.getElementById('puzzle'), puzzleQ = document.getElementById('puzzleQ');
+  let answer = 0;
+  const newPuzzle = () => {
+    const a = 2 + Math.floor(Math.random() * 8), b = 1 + Math.floor(Math.random() * 9);
+    answer = a + b; puzzleQ.textContent = a + ' + ' + b; puzzle.value = '';
+  };
+  newPuzzle();
   form.addEventListener('submit', async e => {
     e.preventDefault();
     // spam traps: bots fill the hidden field or submit within a couple of seconds of the page loading
@@ -36,6 +44,12 @@ if (form) {
       form.reset();
       msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
       msg.className = 'msg ok';
+      return;
+    }
+    if (parseInt(puzzle.value.trim(), 10) !== answer) {
+      msg.textContent = "That answer isn't right. Please try the new sum.";
+      msg.className = 'msg err';
+      newPuzzle(); puzzle.focus();
       return;
     }
     const digits = form.elements.phone.value.replace(/\D/g, '');
@@ -58,7 +72,7 @@ if (form) {
         btn.disabled = false; btn.firstChild.textContent = 'Send message ';
         return;
       }
-      form.reset();
+      form.reset(); newPuzzle();
       msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
       msg.className = 'msg ok';
     } catch (err) {

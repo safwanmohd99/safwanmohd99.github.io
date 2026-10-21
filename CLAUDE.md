@@ -17,7 +17,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Hosted on GitHub Pages from the `main` branch of `safwanmohd99/safwanmohd99.github.io`. Pushing to `main` publishes the site in about a minute.
 - Header, footer and WhatsApp button are repeated on every page. If you change one, change all pages (`index.html`, `services/`, `about/`, `blog/`, `blog/*/`, `404.html`, `_templates/blog-post.html`).
 - Photo: `assets/photo.jpg`. Pages fall back to an "S" monogram if it's missing.
-- Contact form posts to FormSubmit (`formsubmit.co/ajax/safwan031231@gmail.com`).
+- Contact form posts to FormSubmit using its random-string alias (`formsubmit.co/ajax/1a269593e7568d51375bdcc6d6347187`, delivers to safwan031231@gmail.com) so the email is not exposed in the form. Spam traps: `_honey` honeypot, `_blacklist` phrases, 4-second time trap and phone digit check in `assets/main.js`.
 
 ## Pages & URLs
 - Real pages: `/`, `/services/`, `/about/`, `/contact/` (the only contact form), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.

@@ -1,26 +1,7 @@
-# Everyone, including AI search and answer engines, may read this site.
+# Every search engine and AI search crawler may read this whole site
+# (Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot and others).
+# One group for everyone, so any future rule here applies to all crawlers.
 User-agent: *
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
 Allow: /
 
 Sitemap: https://safwandigital.com/sitemap.xml

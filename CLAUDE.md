@@ -10,7 +10,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Industries: B2B services + healthcare (NMC guidelines). Markets: Kerala/India, UAE, Saudi Arabia, GCC. No ecommerce.
 - SEO target: "freelance digital marketer in Kerala", "digital marketer in Kerala", "digital marketing consultant Kerala".
 - No client results/numbers on the site until he provides real ones.
-- Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services). Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
+- Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services), `safwan-selfie.jpg` (blog covers). Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
 
 ## How the site works
 - Plain HTML/CSS/JS. No build step, no Node. Shared styles in `assets/style.css` (linked as `/assets/style.css?v=N` on every page; bump N on all pages whenever style.css changes so browsers don't show the old design), shared script in `assets/main.js`, icons in `assets/icons.svg` (use `<svg><use href="/assets/icons.svg#arrow"/></svg>`).
@@ -39,6 +39,14 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
    The visible FAQ must use the exact same question and answer text as the FAQPage schema (Google requires it). Use `<div class="faq"><details><summary>Question</summary><p>Answer</p></details>…</div>`.
 4. Add the URL to `sitemap.xml` and to the "Blog posts" list in `llms.txt` (newest first).
 5. Show Safwan the draft first. Publish (commit + push) only after he says yes.
+
+## SEO, AEO & GEO checklist (every page and post)
+- `<title>` about 50–65 characters with the main keyword first; meta description 120–160 characters; canonical, og:title/description/url/image and `twitter:card` (summary_large_image).
+- A direct answer near the top (`<p class="tldr">` on posts), question-style headings, and real text (not only images) for every claim.
+- Any visible FAQ must have a matching FAQPage JSON-LD with identical question and answer text; generate the schema from the visible text.
+- JSON-LD links to the shared Person entity `{"@id": "https://safwandigital.com/#person"}` (jobTitle "Digital Marketing Consultant", generalist, Palakkad, sameAs socials) instead of redefining it differently.
+- Keep `llms.txt` updated: quick facts, selected results (only confirmed numbers), common questions, key pages and the newest blog posts first.
+- `robots.txt` allows all search and AI search crawlers; keep it that way.
 
 ## Writing voice
 Follow Safwan's voice: experience-first, humble, plain words, real numbers, no AI buzzwords (leverage, unlock, elevate, game-changer…), no em-dash drama. Example first, principle second. Never invent client results or numbers; ask him for real ones. Healthcare content must stay accurate to NMC guidelines.

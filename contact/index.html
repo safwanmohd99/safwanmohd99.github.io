@@ -9,14 +9,18 @@
 <meta property="og:title" content="Contact Mohammed Safwan | Digital Marketer in Kerala">
 <meta property="og:description" content="Book a consultation on Meta Ads, Google Ads, SEO or healthcare marketing.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Safwan Digital">
 <meta property="og:url" content="https://safwandigital.com/contact/">
-<meta property="og:image" content="https://safwandigital.com/assets/safwan-casual.jpg">
+<meta property="og:image" content="https://safwandigital.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mohammed Safwan, digital marketer in Kerala">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=9">
+<link rel="stylesheet" href="/assets/style.css?v=11">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "ContactPage", "url": "https://safwandigital.com/contact/", "name": "Contact Mohammed Safwan", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://safwandigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://safwandigital.com/contact/"}]}, "mainEntity": {"@id": "https://safwandigital.com/#person"}}, {"@type": "FAQPage", "@id": "https://safwandigital.com/contact/#faq", "mainEntity": [{"@type": "Question", "name": "What should I include in my message?", "acceptedAnswer": {"@type": "Answer", "text": "Your business type, location, what you're running now (Meta Ads, Google Ads, SEO, nothing yet) and the main problem. A website or Instagram link helps me prepare."}}, {"@type": "Question", "name": "Do you take full projects?", "acceptedAnswer": {"@type": "Answer", "text": "Only occasionally, because I work full-time with an agency. Consultations are the best way to work with me, and if a bigger project is a good fit we can discuss it after."}}, {"@type": "Question", "name": "Can we talk in Malayalam?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I'm comfortable in both Malayalam and English."}}]}]}
 </script>
@@ -46,6 +50,7 @@
     <p class="lead" style="margin-bottom:56px">Tell me a little about your business and what's not working. Most people start with a 1–2 hour consultation. The fastest way to reach me is WhatsApp.</p>
     <div class="contact-grid">
       <div>
+        <div class="hello"><img src="/assets/safwan-hello.webp" alt="Mohammed Safwan" width="160" height="160"><p><strong>Hi, I'm Safwan.</strong> Messages here come straight to me, not to a sales team. I usually reply within a day or two.</p></div>
         <div class="direct">
           <a href="https://wa.me/917907678846" target="_blank" rel="noopener"><span class="di"><svg><use href="/assets/icons.svg#chat"/></svg></span><span><small>WhatsApp · fastest</small><strong>+91 79076 78846</strong></span><svg><use href="/assets/icons.svg#arrow"/></svg></a>
           <a href="mailto:safwan031231@gmail.com"><span class="di"><svg><use href="/assets/icons.svg#mail"/></svg></span><span><small>Email</small><strong>safwan031231@gmail.com</strong></span><svg><use href="/assets/icons.svg#arrow"/></svg></a>
@@ -54,7 +59,7 @@
           <a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><span class="di"><svg><use href="/assets/icons.svg#ig"/></svg></span><span><small>Instagram</small><strong>@saf.wan_here</strong></span><svg><use href="/assets/icons.svg#arrow"/></svg></a>
           <a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><span class="di"><svg><use href="/assets/icons.svg#fb"/></svg></span><span><small>Facebook</small><strong>Marketing with Safwan</strong></span><svg><use href="/assets/icons.svg#arrow"/></svg></a>
         </div>
-        <p class="note-dark">Based in Palakkad, Kerala. Working with businesses across Kerala, India, the UAE, Saudi Arabia and the GCC, online over WhatsApp, calls and video meetings.</p>
+        <p class="note-dark">Based in Palakkad, Kerala. Working with businesses across Kerala, India, the UAE, Saudi Arabia, Qatar and the GCC, online over WhatsApp, calls and video meetings.</p>
       </div>
 
       <form id="contactForm" action="https://formsubmit.co/ajax/1a269593e7568d51375bdcc6d6347187" method="POST">
@@ -77,8 +82,14 @@
               <option>Healthcare marketing</option><option>B2B lead generation</option><option>Not sure yet</option>
             </select></div>
         </div>
-        <label for="business">Business name &amp; website</label>
-        <input id="business" name="business" placeholder="Optional">
+        <div class="row2">
+          <div><label for="business">Business name &amp; website</label><input id="business" name="business" placeholder="Optional"></div>
+          <div><label for="found">How did you find me?</label>
+            <select id="found" name="found_via">
+              <option value="">Choose one (optional)</option><option>Google search</option><option>Google Maps</option><option>ChatGPT or another AI tool</option>
+              <option>Instagram</option><option>LinkedIn</option><option>YouTube</option><option>A friend or client</option><option>Other</option>
+            </select></div>
+        </div>
         <label for="message">What do you need help with?</label>
         <textarea id="message" name="message" required placeholder="e.g. We run a clinic in Kochi and our Meta ads bring leads that never pick up the phone"></textarea>
         <label for="puzzle">Quick check: what is <span id="puzzleQ">3 + 4</span>?</label>
@@ -109,10 +120,10 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <p style="max-width:340px">Digital marketer from Palakkad, Kerala. B2B and healthcare marketing for brands in India and the GCC.</p>
+      <div><p style="max-width:340px">Digital marketer from Palakkad, Kerala. B2B and healthcare marketing for brands in India and the GCC.</p><p class="foot-phone">Call or WhatsApp: <a href="tel:+917907678846">+91 79076 78846</a></p></div>
       <nav>
-        <div><h4>Pages</h4><a href="/services/">Services</a><br><a href="/portfolio/">Portfolio</a><br><a href="/about/">About</a><br><a href="/blog/">Blog</a><br><a href="/contact/">Contact</a></div>
-        <div><h4>Follow</h4><a href="https://www.linkedin.com/in/mohammedsafwan-/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#in"/></svg>LinkedIn</a><br><a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#ig"/></svg>Instagram</a><br><a href="https://www.youtube.com/@safwan.99" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#yt"/></svg>YouTube</a><br><a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#fb"/></svg>Facebook</a></div>
+        <div><p class="fh">Pages</p><a href="/services/">Services</a><br><a href="/portfolio/">Portfolio</a><br><a href="/about/">About</a><br><a href="/blog/">Blog</a><br><a href="/contact/">Contact</a></div>
+        <div><p class="fh">Follow</p><a href="https://www.linkedin.com/in/mohammedsafwan-/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#in"/></svg>LinkedIn</a><br><a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#ig"/></svg>Instagram</a><br><a href="https://www.youtube.com/@safwan.99" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#yt"/></svg>YouTube</a><br><a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#fb"/></svg>Facebook</a></div>
       </nav>
     </div>
     <div class="wordmark">Safwan<em>.</em></div>
@@ -122,6 +133,6 @@
 
 <a class="wa-float" href="https://wa.me/917907678846" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
 
-<script src="/assets/main.js?v=5"></script>
+<script src="/assets/main.js?v=6"></script>
 </body>
 </html>

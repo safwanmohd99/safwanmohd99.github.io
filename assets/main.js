@@ -1,3 +1,13 @@
+// conversion events for Google Analytics (they do nothing until GA4 is added to the pages)
+const track = (name, params) => { if (typeof gtag === 'function') gtag('event', name, params); };
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href]');
+  if (!a) return;
+  if (a.href.includes('wa.me/')) track('whatsapp_click', {link_url: a.href});
+  else if (a.href.startsWith('tel:')) track('phone_click', {link_url: a.href});
+  else if (a.href.startsWith('mailto:')) track('email_click', {link_url: a.href});
+});
+
 // footer year
 document.querySelectorAll('.yr').forEach(el => el.textContent = new Date().getFullYear());
 
@@ -50,7 +60,7 @@ if (pfGrid) {
   };
   cases.forEach(cs => {
     const card = cs.querySelector('.cs-card');
-    card.addEventListener('click', () => openCase(cs));
+    card.addEventListener('click', e => { e.preventDefault(); openCase(cs); });
     if (matchMedia('(hover: hover)').matches) card.addEventListener('pointermove', e => {
       const r = card.getBoundingClientRect();
       card.style.setProperty('--x', e.clientX - r.left + 'px'); card.style.setProperty('--y', e.clientY - r.top + 'px');
@@ -63,14 +73,24 @@ if (pfGrid) {
   if (fromHash) openCase(fromHash);
 
   const lb = document.querySelector('.cs-lightbox'), lbImg = lb.querySelector('img');
+  let lastImg = null;
+  const openImg = img => {
+    lastImg = img; lbImg.src = img.src; lbImg.alt = img.alt; lb.hidden = false;
+    (dlg.open ? dlg : document.body).appendChild(lb);
+    lb.querySelector('button').focus();
+  };
+  const closeImg = () => { lb.hidden = true; lastImg?.focus(); };
   document.addEventListener('click', e => {
     const img = e.target.closest('.cs-gallery img, .pf-f-gallery img');
-    if (!img) return;
-    lbImg.src = img.src; lbImg.alt = img.alt; lb.hidden = false;
-    (dlg.open ? dlg : document.body).appendChild(lb);
+    if (img) openImg(img);
   });
-  lb.addEventListener('click', () => { lb.hidden = true; });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) { e.preventDefault(); lb.hidden = true; } });
+  // screenshots open with Enter or Space too
+  document.addEventListener('keydown', e => {
+    const img = e.target.closest?.('.cs-gallery img, .pf-f-gallery img');
+    if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openImg(img); }
+  });
+  lb.addEventListener('click', closeImg);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) { e.preventDefault(); closeImg(); } });
 
   const feat = document.querySelector('.pf-feature');
   if (feat) {
@@ -139,6 +159,7 @@ if (form) {
         btn.disabled = false; btn.firstChild.textContent = 'Send message ';
         return;
       }
+      track('generate_lead', {form: 'contact', found_via: form.elements.found_via.value || 'not given'});
       form.reset(); newPuzzle();
       msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
       msg.className = 'msg ok';

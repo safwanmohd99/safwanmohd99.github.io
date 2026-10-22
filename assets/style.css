@@ -333,6 +333,10 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
 .foot-top .si{width:16px;height:16px;stroke:currentColor;vertical-align:-3px;margin-right:8px}
 .foot-top .fh{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;color:var(--muted-dark)}
 .foot-phone{margin-top:14px;font-size:15px}
+.hello{display:flex;gap:16px;align-items:center;margin-bottom:28px}
+.hello img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 64px;border:2px solid var(--accent)}
+.hello p{font-size:16px;color:#CFC9BE;max-width:420px}
+.hello strong{color:var(--paper)}
 .wordmark{font-size:clamp(56px,13.5vw,200px);font-weight:600;letter-spacing:-.07em;line-height:.8;color:var(--paper);white-space:nowrap}
 .wordmark em{color:var(--accent)}
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line-dark);padding-top:22px;margin-top:40px;font-size:14px}

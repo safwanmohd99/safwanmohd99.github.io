@@ -8,6 +8,15 @@ document.addEventListener('click', e => {
   else if (a.href.startsWith('mailto:')) track('email_click', {link_url: a.href});
 });
 
+// if a photo is missing, remove it so the "S" monogram or plain card shows instead
+document.querySelectorAll('img[data-fallback]').forEach(img => {
+  if (img.complete && !img.naturalWidth) img.remove();
+  else img.addEventListener('error', () => img.remove());
+});
+
+// don't let other sites show this site inside a frame (clickjacking)
+if (window.top !== window.self) window.top.location = window.location.href;
+
 // footer year
 document.querySelectorAll('.yr').forEach(el => el.textContent = new Date().getFullYear());
 

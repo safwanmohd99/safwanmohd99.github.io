@@ -36,17 +36,24 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
    <a href="/blog/<slug>/" class="post"><div class="cover">Short cover line</div><span class="meta">Category · 12 Oct 2026</span><h3>Title</h3><p>One-line summary.</p></a>
    ```
    Every post gets a thumbnail at `blog/<slug>/cover.jpg` (1200×900): copy `_templates/blog-cover.html`, fill the placeholders (short title with one `<em>` word, category, font size, pick one of Safwan's photos), serve the repo root locally and screenshot it at 1200×900 with headless Chromium. Use it in the card as `<div class="cover"><img src="/blog/<slug>/cover.jpg" alt="Post title" width="1200" height="900" loading="lazy"></div>`, and as the post's `og:image` and schema `image`.
-   The visible FAQ must use the exact same question and answer text as the FAQPage schema (Google requires it). Use `<div class="faq"><details><summary>Question</summary><p>Answer</p></details>…</div>`.
+   The visible FAQ must use the exact same question and answer text as the FAQPage schema (structured data must match what's on the page). Use `<div class="faq"><details><summary>Question</summary><p>Answer</p></details>…</div>`.
+   End the body (before the FAQ `<hr>`) with a short "Related reading" list of 2–3 related posts, case studies or service sections, and add in-text links where a post mentions something the site covers elsewhere.
 4. Add the URL to `sitemap.xml` and to the "Blog posts" list in `llms.txt` (newest first).
 5. Show Safwan the draft first. Publish (commit + push) only after he says yes.
 
-## SEO, AEO & GEO checklist (every page and post)
-- `<title>` about 50–65 characters with the main keyword first; meta description 120–160 characters; canonical, og:title/description/url/image and `twitter:card` (summary_large_image).
-- A direct answer near the top (`<p class="tldr">` on posts), question-style headings, and real text (not only images) for every claim.
-- Any visible FAQ must have a matching FAQPage JSON-LD with identical question and answer text; generate the schema from the visible text.
-- JSON-LD links to the shared Person entity `{"@id": "https://safwandigital.com/#person"}` (jobTitle "Digital Marketing Consultant", generalist, Palakkad, sameAs socials) instead of redefining it differently.
-- Keep `llms.txt` updated: quick facts, selected results (only confirmed numbers), common questions, key pages and the newest blog posts first.
-- `robots.txt` allows all search and AI search crawlers; keep it that way.
+## SEO and AI search checklist (every page and post)
+Based on Google's SEO Starter Guide and its AI optimization guide (July 2026): optimising for AI Overviews and AI Mode is still SEO. There are no special files, markup or "AI writing" tricks; the biggest factor is useful, original, first-hand content.
+- `<title>` about 50–65 characters with the main keyword first; meta description 120–160 characters; canonical, og:title/description/url/image and `twitter:card` (summary_large_image). Avoid changing titles on the main pages more than every few weeks; give Google time to settle.
+- A direct answer near the top (`<p class="tldr">` on posts), question-style headings, and real text (not only images) for every claim. If a number or result appears in a screenshot, also write it in the page text.
+- Use Safwan's own experience: real examples, real numbers he has confirmed, what he changed and why. Never write generic text an AI could produce without him.
+- Link related pages to each other with descriptive link text (services ↔ case studies ↔ blog posts). Never "click here".
+- Images: descriptive alt text, `width` and `height` attributes, and placed next to the text they support.
+- Structured data must match the visible page. FAQPage schema is kept for understanding but no longer shows as a rich result (Google removed FAQ rich results in May 2026), so it's optional on new pages. Where a page has it, keep the question and answer text identical to the visible FAQ.
+- JSON-LD links to the shared Person entity `{"@id": "https://safwandigital.com/#person"}` (jobTitle "Digital Marketing Consultant", generalist, Palakkad, sameAs socials, image `assets/photo.jpg`) instead of redefining it differently. The business name in schema is "Safwan Digital".
+- `llms.txt` is optional upkeep for non-Google AI tools (Google doesn't use it). Keep it factual: quick facts, selected results (only confirmed numbers), key pages and newest posts first. No self-promotional Q&A.
+- `robots.txt` has one `User-agent: *` group that allows everything; keep it that way (no per-bot groups).
+- Update `<lastmod>` in `sitemap.xml` when a page's content changes meaningfully.
+- Search Console (Safwan does this): sitemap submitted, new pages inspected and indexing requested, Settings → Search generative AI set to Include, and check the Generative AI performance report monthly.
 
 ## Writing voice
 Follow Safwan's voice: experience-first, humble, plain words, real numbers, no AI buzzwords (leverage, unlock, elevate, game-changer…), no em-dash drama. Example first, principle second. Never invent client results or numbers; ask him for real ones. Healthcare content must stay accurate to NMC guidelines.

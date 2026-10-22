@@ -14,7 +14,7 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 ::selection{background:var(--accent);color:#fff}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:1.02}
@@ -188,6 +188,9 @@ details p{color:var(--muted);padding:0 60px 26px 0}
 .post .cover:has(img){padding:0}
 .post .cover img{width:100%;height:100%;object-fit:cover}
 .post:hover .cover{transform:translateY(-4px)}
+.post .cover.num{aspect-ratio:16/10;flex-direction:column;align-items:flex-start;justify-content:space-between;font-size:24px}
+.post .cover.num b{font-size:clamp(56px,6vw,84px);line-height:1;color:var(--accent);letter-spacing:-.02em}
+.post .cover.num span{color:var(--paper)}
 .post .meta{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
 .post h3{font-size:24px;margin:10px 0 8px;letter-spacing:-.025em;line-height:1.15}
 .post p{color:var(--muted);font-size:16px}
@@ -486,6 +489,8 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
 .cs-panel h4{font-size:18px;margin-bottom:8px}
 .cs-panel p{color:var(--muted);margin-bottom:12px;font-size:17px}
 .cs-note{font-size:14px;color:var(--muted);font-style:italic}
+.cs-related{font-size:14px;color:var(--muted);margin-top:8px}
+.cs-related a{color:var(--accent-ink);font-weight:600}
 .cs-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:24px}
 .cs-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;background:#fff;transition:transform .25s}
 .cs-gallery img:hover{transform:scale(1.02)}

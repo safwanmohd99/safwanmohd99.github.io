@@ -7,6 +7,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Freelance on the side: mainly 1–2 hour consultations; full projects only rarely. Never call him a full-time freelancer.
 - In digital marketing since 2021 (BA English → academy course → self-taught via agency, in-house, freelance).
 - A digital marketing generalist (Meta Ads, Google Ads, SEO, AI search), NOT a specialist. Never call him a specialist; healthcare and B2B are the industries he knows best.
+- Also offers custom website development (static sites and dynamic sites with a backend), delivered with a small team of freelance developers he works with; say "a small team of freelance developers", never name them or claim a bigger company. No client website examples or prices until he gives them.
 - Industries: B2B services + healthcare (NMC guidelines). Markets: Kerala/India, UAE, Saudi Arabia, GCC. No ecommerce.
 - SEO target: "freelance digital marketer in Kerala", "digital marketer in Kerala", "digital marketing consultant Kerala".
 - No client results/numbers on the site until he provides real ones.

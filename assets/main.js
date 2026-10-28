@@ -179,3 +179,12 @@ if (form) {
     btn.disabled = false; btn.firstChild.textContent = 'Send message ';
   });
 }
+
+// skill page: copy-to-clipboard buttons on the example prompts
+document.querySelectorAll('.sk-copy').forEach(btn => btn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(btn.parentElement.querySelector('pre').textContent);
+    btn.textContent = 'Copied';
+  } catch (err) { btn.textContent = 'Select & copy'; }
+  setTimeout(() => btn.textContent = 'Copy', 2000);
+}));

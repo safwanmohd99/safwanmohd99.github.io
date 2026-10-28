@@ -11,7 +11,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Industries: B2B services + healthcare (NMC guidelines). Markets: Kerala/India, UAE, Saudi Arabia, GCC. No ecommerce.
 - SEO target: "freelance digital marketer in Kerala", "digital marketer in Kerala", "digital marketing consultant Kerala".
 - No client results/numbers on the site until he provides real ones.
-- Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services), `safwan-selfie.jpg` (blog covers), `safwan-trees.jpg` (about "Working with me"), `safwan-hello.webp` (contact page greeting). More photos for future blog covers: `safwan-green.jpg`, `safwan-white.jpg`, `safwan-mirror.jpg` (orange wall), `safwan-car.jpg`; use a different one per cover so posts don't all look the same. Pages show the smaller `.webp` copies (same names, e.g. `assets/photo.webp`); keep the `.jpg` originals for og:image, schema and the cover templates. `assets/avatar.webp` is the small face photo for the blog author circles. `assets/og-image.jpg` (1200×630, made from `_templates/og-image.html`) is the social share image for the main pages. Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
+- Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services), `safwan-selfie.jpg` (blog covers), `safwan-trees.jpg` (about "Working with me"), `safwan-hello.webp` (contact page greeting). `safwan-mirror.jpg` (orange wall) and `safwan-white.jpg` (Reel skill page), `safwan-green.jpg` (Reel skill cover). Still unused: `safwan-car.jpg`. Reuse any for future covers; use a different one per cover so posts don't all look the same. Pages show the smaller `.webp` copies (same names, e.g. `assets/photo.webp`); keep the `.jpg` originals for og:image, schema and the cover templates. `assets/avatar.webp` is the small face photo for the blog author circles. `assets/og-image.jpg` (1200×630, made from `_templates/og-image.html`) is the social share image for the main pages. Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
 
 ## How the site works
 - Plain HTML/CSS/JS. No build step, no Node. Shared styles in `assets/style.css` (linked as `/assets/style.css?v=N` on every page; bump N on all pages whenever style.css changes so browsers don't show the old design), shared script in `assets/main.js`, icons in `assets/icons.svg` (use `<svg><use href="/assets/icons.svg#arrow"/></svg>`).
@@ -29,7 +29,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Account security is Safwan's side: 2FA on GitHub, Gmail and Hostinger; domain verified in GitHub Pages settings; Hostinger domain lock and auto-renew on.
 
 ## Pages & URLs
-- Real pages: `/`, `/services/`, `/portfolio/` (case studies; built from data in the page, images in `assets/portfolio/<case-id>/NN.webp`), `/about/`, `/contact/` (the only contact form), `/claude-reel-skill/` (free Claude Reel-editing skill for Instagram followers; zip in that folder, not in the nav), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
+- Real pages: `/`, `/services/`, `/portfolio/` (case studies; built from data in the page, images in `assets/portfolio/<case-id>/NN.webp`), `/about/`, `/contact/` (the only contact form), `/resources/` (free things he gives away, like `/blog/` but for downloads; in the header after Blog and in the footer), `/resources/<slug>/` (one page per resource, e.g. `/resources/claude-reel-skill/` with its zip in that folder; old `/claude-reel-skill/` is a redirect page), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
 - Never link to `#contact`; all CTAs go to `/contact/`. YouTube: https://www.youtube.com/@safwan.99
 - Old WordPress URLs (`/faq/...`, `/faq-category/...`, `/category/...`, `/author/...`, old `/blog/<old-slug>/`, `/feed/`) are tiny redirect pages (meta refresh + canonical + noindex). Don't delete them. `sitemap_index.xml` points to `sitemap.xml`.
 - Contact form uses FormSubmit; it must be activated once from the email FormSubmit sends to safwan031231@gmail.com.
@@ -49,6 +49,15 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
    End the body (before the FAQ `<hr>`) with a short "Related reading" list of 2–3 related posts, case studies or service sections, and add in-text links where a post mentions something the site covers elsewhere.
 4. Add the URL to `sitemap.xml` and to the "Blog posts" list in `llms.txt` (newest first).
 5. Show Safwan the draft first. Publish (commit + push) only after he says yes.
+
+## Adding a resource (freebie)
+Resources are things people download or use (Claude skills, templates, checklists), often promised in a Reel. Not blog posts.
+1. Short slug, e.g. `meta-ads-checklist`. Page at `resources/<slug>/index.html`, built like `resources/claude-reel-skill/` (same head, CSP, header with Resources active, footer). Files to download go in the same folder.
+2. Read every file before publishing it (the repo is public) and check it works the way the page says.
+3. Cover `resources/<slug>/cover.jpg` (1200×900 from `_templates/blog-cover.html`, category "Free resource", a different photo each time) + `thumb.webp` (600×450); cover.jpg is the og:image.
+4. No orphans: add a card at the top of `<div class="posts" id="resources">` in `resources/index.html` and to its ItemList schema; link it from related blog posts (in-text + "Related reading") and link those posts back from the resource page.
+5. Add it to `sitemap.xml` and to the Key pages in `llms.txt`.
+6. Show Safwan the draft; publish only after he says yes. Then check the live URL and the download work.
 
 ## SEO and AI search checklist (every page and post)
 Based on Google's SEO Starter Guide and its AI optimization guide (July 2026): optimising for AI Overviews and AI Mode is still SEO. There are no special files, markup or "AI writing" tricks; the biggest factor is useful, original, first-hand content.

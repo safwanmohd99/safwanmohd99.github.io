@@ -37,7 +37,8 @@
 - [About](https://safwandigital.com/about/): background and experience
 - [Blog](https://safwandigital.com/blog/): lessons from real campaigns
 - [Contact](https://safwandigital.com/contact/): consultation enquiries
-- [Free Claude Reel editing skill](https://safwandigital.com/claude-reel-skill/): free Claude skill that edits talking-head videos into Instagram Reels, with setup steps
+- [Resources](https://safwandigital.com/resources/): free tools, Claude skills and guides he shares
+- [Free Claude Reel editing skill](https://safwandigital.com/resources/claude-reel-skill/): free Claude skill that edits talking-head videos into Instagram Reels, with setup steps
 
 ## Blog posts
 - [WhatsApp Business charges from October 2026: what you actually pay](https://safwandigital.com/blog/whatsapp-business-charges-october-2026/)

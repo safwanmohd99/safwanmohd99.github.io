@@ -29,7 +29,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Account security is Safwan's side: 2FA on GitHub, Gmail and Hostinger; domain verified in GitHub Pages settings; Hostinger domain lock and auto-renew on.
 
 ## Pages & URLs
-- Real pages: `/`, `/services/`, `/portfolio/` (case studies; built from data in the page, images in `assets/portfolio/<case-id>/NN.webp`), `/about/`, `/contact/` (the only contact form), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
+- Real pages: `/`, `/services/`, `/portfolio/` (case studies; built from data in the page, images in `assets/portfolio/<case-id>/NN.webp`), `/about/`, `/contact/` (the only contact form), `/claude-reel-skill/` (free Claude Reel-editing skill for Instagram followers; zip in that folder, not in the nav), `/blog/`, `/blog/<slug>/`, `/privacy-policy/`. Every page has a `<link rel="canonical">` with its exact https://safwandigital.com URL; keep that on new pages.
 - Never link to `#contact`; all CTAs go to `/contact/`. YouTube: https://www.youtube.com/@safwan.99
 - Old WordPress URLs (`/faq/...`, `/faq-category/...`, `/category/...`, `/author/...`, old `/blog/<old-slug>/`, `/feed/`) are tiny redirect pages (meta refresh + canonical + noindex). Don't delete them. `sitemap_index.xml` points to `sitemap.xml`.
 - Contact form uses FormSubmit; it must be activated once from the email FormSubmit sends to safwan031231@gmail.com.

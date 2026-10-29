@@ -38,6 +38,8 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 
 ## Design
 Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1F`. Fonts: Inter Tight (text) + Instrument Serif italic for highlighted words (`<em>` inside headings). Keep one accent word per heading.
+- **Light and dark mode.** Every real page (and `_templates/blog-post.html`) loads `<script src="/assets/theme.js?v=1"></script>` right after the style.css link: it sets `data-theme="light|dark"` on `<html>` before the page draws (visitor's saved choice, else their device setting). `main.js` adds the round sun/moon switch to the header and saves the choice in localStorage. Keep that script tag on new pages.
+- Colours must come from the CSS variables so dark mode works: `--paper`/`--card` (backgrounds), `--ink` (text), `--muted`, `--line`, `--accent-ink` (links). For dark blocks (footer, `.dark` sections, dark buttons, table heads) use `--night` and `--on-night`, not `--ink`/`--paper`. Dark values live in the `[data-theme="dark"]` block at the end of style.css. Test new pages in both modes.
 
 ## Adding a blog post
 1. Pick a short URL slug, e.g. `why-clinics-waste-meta-ads-budget`.

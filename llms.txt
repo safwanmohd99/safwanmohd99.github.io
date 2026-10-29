@@ -37,6 +37,13 @@
 ## Key pages
 - [Home](https://safwandigital.com/): overview, who he helps, how a consultation works
 - [Services](https://safwandigital.com/services/): consultation, Meta Ads, Google Ads, SEO/AEO/GEO, healthcare marketing, B2B lead generation, custom website development (static and dynamic, built with a small team of freelance developers), with FAQs
+  - [Freelance SEO consultant in Kerala (SEO, AEO & GEO)](https://safwandigital.com/services/seo/)
+  - [Freelance Meta Ads manager in Kerala](https://safwandigital.com/services/meta-ads/)
+  - [Freelance Google Ads consultant in Kerala](https://safwandigital.com/services/google-ads/)
+  - [Healthcare marketing for clinics and hospitals](https://safwandigital.com/services/healthcare-marketing/)
+  - [B2B lead generation in India and the GCC](https://safwandigital.com/services/b2b-lead-generation/)
+  - [Website development in Kerala](https://safwandigital.com/services/website-development/)
+  - [Digital marketing consultation](https://safwandigital.com/services/consultation/)
 - [Portfolio](https://safwandigital.com/portfolio/): case studies with results across Meta Ads, Google Ads, SEO and organic growth
 - [About](https://safwandigital.com/about/): background and experience
 - [Blog](https://safwandigital.com/blog/): lessons from real campaigns

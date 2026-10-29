@@ -55,7 +55,7 @@
       <h1>How to use Claude for SEO: free, Pro and advanced setups</h1>
       <div class="byline">
         <span class="avatar"><img src="/assets/avatar.webp" alt="" width="96" height="96" data-fallback>S</span>
-        <span><b>Mohammed Safwan</b><br>29 Oct 2026 · 8 min read</span>
+        <span><b>Mohammed Safwan</b><br>29 Oct 2026 · 10 min read</span>
       </div>
     </div>
 
@@ -76,6 +76,20 @@
         <li><strong>Search Console data:</strong> export your Performance report as a file, upload it and ask: "Which pages get impressions but few clicks? Which queries am I ranking 8 to 20 for?" Those are your quickest wins.</li>
         <li><strong>Schema markup:</strong> ask Claude to write FAQ or LocalBusiness schema (JSON-LD) for a page, then test it in Google's Rich Results Test.</li>
       </ul>
+      <h3>Example: grouping keywords with the free plan</h3>
+      <p>Here is what this looks like in practice. Say you're planning content for a skin clinic in Kochi and you have a list of keywords from a free tool.</p>
+      <p><strong>Prompt:</strong> "Here are 12 keywords for a skin clinic in Kochi. Group them by search intent (learning, comparing, ready to book) and suggest which page on the website should target each group."</p>
+      <p><strong>Input:</strong> acne treatment in Kochi, best dermatologist in Kochi, how to remove acne scars, laser hair removal cost Kochi, is laser hair removal permanent, chemical peel vs laser, skin clinic near me, pigmentation treatment Kochi, why do I get acne on my chin, PRP for hair fall, hair fall treatment Kochi, dermatologist vs cosmetologist.</p>
+      <p><strong>The kind of answer you get back:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Intent</th><th>Keywords</th><th>Best page</th></tr></thead>
+        <tbody>
+          <tr><td>Ready to book</td><td>acne treatment in Kochi, best dermatologist in Kochi, skin clinic near me, pigmentation treatment Kochi, hair fall treatment Kochi</td><td>Service pages and Google Business Profile</td></tr>
+          <tr><td>Comparing</td><td>laser hair removal cost Kochi, chemical peel vs laser, dermatologist vs cosmetologist</td><td>Comparison or pricing guide posts</td></tr>
+          <tr><td>Learning</td><td>how to remove acne scars, is laser hair removal permanent, why do I get acne on my chin, PRP for hair fall</td><td>Blog posts and FAQs</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>How to check it:</strong> search 2 or 3 keywords from each group on Google. If the results for two keywords show the same kind of pages, they belong together. If one shows clinic pages and the other shows articles, split them. Claude groups by meaning; Google's results tell you what searchers actually want.</p>
       <p>Free plan users can also add <strong>one custom connector</strong>, and skills work on all plans when code execution is turned on. So you can try the Pro-level ideas below on a small scale.</p>
 
       <h2>What does the Pro plan add for SEO?</h2>
@@ -111,6 +125,7 @@
       </ul>
       <blockquote>The skill is where your experience goes. Claude does the checking, your checklist decides what good looks like.</blockquote>
       <p>I've shared a free skill for a different job (editing Reels) on my <a href="/resources/">resources page</a>, if you want to see what a skill folder looks like.</p>
+      <p>Want an SEO audit skill built around your own checklist, for your site or your clients? <a href="/contact/">Tell me what you check today</a> and I'll help you set it up in a 1-hour consultation.</p>
 
       <h2>Advanced: connecting your website to Claude Code</h2>
       <p>This is how I run this website. The site's files live on GitHub, and <a href="https://code.claude.com/docs" target="_blank" rel="noopener">Claude Code</a> can read and change them directly. Once your website is connected like this, Claude can work on the site itself, not just give advice:</p>
@@ -120,6 +135,15 @@
         <li><strong>Prepare and publish blog posts:</strong> you give the idea and your own experience, Claude builds the page, the cover image, the internal links and the sitemap entry, and it goes live when you approve it.</li>
         <li><strong>Check conversions:</strong> are the call-to-action buttons working, does the contact form send, is the tracking set up correctly.</li>
       </ul>
+      <h3>Claude chat vs Claude Code: what's the difference?</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Tool</th><th>What it works with</th><th>Typical SEO use</th></tr></thead>
+        <tbody>
+          <tr><td>Claude chat (free or Pro)</td><td>What you paste or upload, plus connectors you add</td><td>Keyword ideas, outlines, titles, audits from tool data, reports</td></tr>
+          <tr><td>Claude Code</td><td>Your website's files and the tools on your computer or server</td><td>Fixing technical errors across all pages, building and publishing pages</td></tr>
+        </tbody>
+      </table></div>
+      <p>Claude Code only works with what you give it access to. It doesn't automatically see your Search Console, your analytics or your SEO tools. You connect those separately, and you choose what it's allowed to change.</p>
       <p>This works best for sites built in plain code or frameworks. For WordPress sites, Claude can still help through connectors and plugins, but the setup is different.</p>
       <p>You don't need to know coding to use it. I don't write code myself. But you do need to understand what's being changed, and you need a rule: <strong>nothing goes live without a review.</strong></p>
 
@@ -177,7 +201,7 @@
   <section>
     <div class="wrap">
       <div class="cta-block">
-        <h2>Want help with this for <em>your business?</em></h2>
+        <h2>Want Claude in your SEO <em>workflow?</em></h2>
         <a href="/contact/" class="btn">Book a consultation <svg><use href="/assets/icons.svg#arrow"/></svg></a>
       </div>
     </div>

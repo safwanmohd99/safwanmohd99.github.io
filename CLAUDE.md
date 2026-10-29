@@ -51,6 +51,20 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
 4. Add the URL to `sitemap.xml` and to the "Blog posts" list in `llms.txt` (newest first).
 5. Show Safwan the draft first. Publish (commit + push) only after he says yes.
 
+### What a good post looks like (model: `blog/how-to-use-claude-for-seo/`)
+- **Mix of topics:** about half "authority" posts (how-to guides on AI tools and SEO, e.g. Claude for SEO, free SEO tools, Search Console) to show he knows the field, half client-focused posts (clinics, NMC, Meta/Google Ads, GCC, B2B). Avoid generic high-volume topics big sites already own; aim for specific topics where first-hand experience helps.
+- **One topic only**, organised by level where it fits (beginner → pro → advanced). Don't pad the word count.
+- **Show, don't just tell:** at least one worked example: the prompt or task, a sample input, the output (a table works well) and how to verify it. Label sample data as an example; never present it as a client result.
+- **Comparison table** where two options get confused (e.g. Claude chat vs Claude Code), wrapped in `<div class="table-wrap"><table>…</table></div>`.
+- **Be precise about tools:** check plans, limits and features against official docs before writing, and list them under "Sources". Say what access a tool needs; don't imply it can do things automatically.
+- **"Always check" section** for AI/automation topics: facts can be wrong, health and finance need expert review (NMC for medical), no mass-produced AI pages.
+- **CTAs:** one small in-text CTA mid-post linked to `/contact/`, tied to the post's topic, and a topic-specific heading in the bottom `cta-block` (e.g. "Want Claude in your SEO <em>workflow?</em>"), never the template's generic one.
+- **Ask Safwan for his own proof:** screenshots of his real workflow, something that worked, something AI got wrong. Add them when he sends them; never invent them.
+- Outside reviews (e.g. from ChatGPT): apply what's right, but keep the positioning rules above (generalist, never "specialist") and check claims against the actual CSS/code before changing things.
+
+### Instagram Story image for a post
+When he shares a post as an IG Story: 1080×1920 PNG from `_templates/ig-story.html` (same photo as the post's cover, "New on the blog" label, title with one `<em>` word, up to three short points, "Tap the link to read ↓" with empty space below for the link sticker, Safwan. + safwandigital.com at the bottom; keep text out of the top ~240px and bottom ~120px). Serve the repo root locally, screenshot with headless Chromium, and send him the file; it is not committed.
+
 ## Adding a resource (freebie)
 Resources are things people download or use (Claude skills, templates, checklists), often promised in a Reel. Not blog posts.
 1. Short slug, e.g. `meta-ads-checklist`. Page at `resources/<slug>/index.html`, built like `resources/claude-reel-skill/` (same head, CSP, header with Resources active, footer). Files to download go in the same folder.

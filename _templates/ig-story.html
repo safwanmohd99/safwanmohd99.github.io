@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Instagram Story, 1080x1920. Fill the {{PLACEHOLDERS}}, serve the repo root, screenshot at 1080x1920. -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Tight:wght@500;600;700&display=block" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#15130F;color:#F5F1EA;font-family:'Inter Tight',sans-serif;position:relative}
+.photo{position:absolute;left:0;right:0;top:0;height:1060px;background:url(/assets/{{PHOTO}}) center 30%/cover}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,19,15,.35) 0%,rgba(21,19,15,0) 25%,rgba(21,19,15,0) 55%,#15130F 100%)}
+.top{position:absolute;top:240px;left:80px;z-index:2;display:inline-flex;align-items:center;gap:14px;background:#FF5A1F;color:#15130F;font-size:30px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:16px 28px;border-radius:999px}
+.txt{position:absolute;left:80px;right:80px;top:930px;z-index:2}
+h1{font-size:132px;line-height:.98;letter-spacing:-.05em;font-weight:700}
+h1 em{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:#FF5A1F;letter-spacing:-.02em}
+.levels{display:flex;gap:16px;margin-top:48px}
+.lv{flex:1;border:2px solid #3a362e;border-radius:24px;padding:24px 22px}
+.lv b{display:block;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#FF5A1F;font-weight:600}
+.lv span{display:block;font-size:34px;font-weight:600;margin-top:8px;letter-spacing:-.02em}
+.cta{position:absolute;left:0;right:0;top:1500px;text-align:center;font-size:36px;font-weight:600;color:#F5F1EA}
+.cta i{display:block;font-style:normal;font-size:56px;color:#FF5A1F;margin-top:6px}
+.brand{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-size:34px;font-weight:700;letter-spacing:-.03em}.brand span{color:#FF5A1F}
+.brand small{display:block;font-size:24px;font-weight:500;color:#A9A398;letter-spacing:0;margin-top:4px}
+</style></head><body><div class="photo"></div>
+<div class="top">New on the blog</div>
+<div class="txt"><h1>{{SHORT_TITLE_WITH_ONE_EM}}</h1>
+<div class="levels"><div class="lv"><b>{{LABEL_1}}</b><span>{{POINT_1}}</span></div><div class="lv"><b>{{LABEL_2}}</b><span>{{POINT_2}}</span></div><div class="lv"><b>{{LABEL_3}}</b><span>{{POINT_3}}</span></div></div></div>
+<div class="cta">Tap the link to read<i>↓</i></div>
+<div class="brand">Safwan<span>.</span><small>safwandigital.com</small></div>
+</body></html>

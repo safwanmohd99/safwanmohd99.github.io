@@ -169,6 +169,7 @@ if (form) {
         return;
       }
       track('generate_lead', {form: 'contact', found_via: form.elements.found_via.value || 'not given'});
+      { const r = btn.getBoundingClientRect(); popEnquiry(r.left + r.width / 2, r.top); }
       form.reset(); newPuzzle();
       msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
       msg.className = 'msg ok';
@@ -211,3 +212,55 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', e => {
   let saved; try { saved = localStorage.getItem('theme'); } catch (err) {}
   if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
 });
+
+// targeting cursor: orange corner brackets that lock onto buttons and cards (computers with a mouse only)
+// and a small "+1 enquiry" pop when someone sends the form or opens WhatsApp
+function popEnquiry(x, y) {
+  const p = document.createElement('span');
+  p.className = 'enquiry-pop';
+  p.innerHTML = '+1 <em>enquiry</em>';
+  p.style.left = x + 'px'; p.style.top = y + 'px';
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 1350);
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href*="wa.me/"]');
+  if (a && e.clientX) popEnquiry(e.clientX, e.clientY);
+});
+if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const LOCK = 'a.btn, .links a, .brand, a.row, a.post, .cs-card, a.extra, .direct a, .seo-chips a, summary, .pf-filter, .cs-tabs button, .theme-btn, .jump a, a.link, .foot-top a, .wa-float, .pf-jump, .sk-copy, form button, .reel, .ig-follow, .crumbs a';
+  const SKIP = 'input, textarea, select, label, dialog, .cs-lightbox';
+  const box = document.createElement('div');
+  box.className = 'tgt-cursor';
+  box.setAttribute('aria-hidden', 'true');
+  box.innerHTML = '<i></i><i></i><i></i><i></i><b></b>';
+  document.body.appendChild(box);
+  let mx = -100, my = -100, x = -100, y = -100, w = 28, h = 28, target = null, running = false;
+  const tick = () => {
+    let tx, ty, tw, th;
+    if (target && target.isConnected) {
+      const r = target.getBoundingClientRect(), pad = 6;
+      tx = r.left - pad; ty = r.top - pad; tw = r.width + pad * 2; th = r.height + pad * 2;
+    } else { tw = 28; th = 28; tx = mx - 14; ty = my - 14; }
+    x += (tx - x) * .25; y += (ty - y) * .25; w += (tw - w) * .25; h += (th - h) * .25;
+    box.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;
+    box.style.width = w.toFixed(1) + 'px'; box.style.height = h.toFixed(1) + 'px';
+    // stop the loop once it has settled, so nothing runs while the mouse is still
+    if (Math.abs(tx - x) + Math.abs(ty - y) + Math.abs(tw - w) + Math.abs(th - h) > .5) requestAnimationFrame(tick);
+    else running = false;
+  };
+  const wake = () => { if (!running) { running = true; requestAnimationFrame(tick); } };
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    mx = e.clientX; my = e.clientY;
+    if (x < -50) { x = mx - 14; y = my - 14; }
+    const off = !!e.target.closest(SKIP) || !!document.querySelector('dialog[open]');
+    root.classList.toggle('tgt-on', !off);
+    target = off ? null : e.target.closest(LOCK);
+    box.classList.toggle('locked', !!target);
+    box.classList.toggle('link', !target && !!e.target.closest('a, button'));
+    wake();
+  }, {passive: true});
+  addEventListener('scroll', wake, {passive: true});
+  document.documentElement.addEventListener('mouseleave', () => root.classList.remove('tgt-on'));
+}

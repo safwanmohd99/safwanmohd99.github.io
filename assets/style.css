@@ -661,3 +661,21 @@ nav .links{order:2;margin-left:auto}
 [data-theme="dark"] .theme-btn .sun{display:block}
 .menu-btn{order:4}
 @media (max-width:760px){.theme-btn{margin-left:auto;margin-right:8px}}
+
+/* targeting cursor (added by main.js on computers with a mouse; hidden on phones and with reduced motion) */
+.tgt-cursor{position:fixed;left:0;top:0;width:28px;height:28px;pointer-events:none;z-index:1100;opacity:0;transition:opacity .2s}
+.tgt-on .tgt-cursor{opacity:1}
+.tgt-on,.tgt-on a,.tgt-on button,.tgt-on summary,.tgt-on .cs-card{cursor:none}
+.tgt-on input,.tgt-on textarea,.tgt-on select{cursor:auto}
+.tgt-cursor i{position:absolute;width:10px;height:10px;border:2px solid var(--accent)}
+.tgt-cursor i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-top-left-radius:4px}
+.tgt-cursor i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-top-right-radius:4px}
+.tgt-cursor i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-bottom-left-radius:4px}
+.tgt-cursor i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:4px}
+.tgt-cursor b{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--accent);transition:transform .2s,opacity .2s}
+.tgt-cursor.link b{transform:scale(1.8)}
+.tgt-cursor.locked b{opacity:0}
+.enquiry-pop{position:fixed;pointer-events:none;z-index:1101;font:600 15px var(--sans);color:#fff;background:var(--accent);padding:5px 12px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);animation:enquiry-pop 1.3s cubic-bezier(.2,.8,.2,1) forwards}
+.enquiry-pop em{color:#fff;font-size:17px}
+@keyframes enquiry-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}20%{opacity:1;transform:translate(-50%,-110%) scale(1)}100%{opacity:0;transform:translate(-50%,-280%) scale(1)}}
+@media (prefers-reduced-motion:reduce){.enquiry-pop{display:none}}

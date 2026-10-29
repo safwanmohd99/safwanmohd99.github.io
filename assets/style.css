@@ -527,7 +527,7 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
 .seo-shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
 .seo-shots figure{margin:0}
 .seo-shots figure:first-child{grid-column:1/-1}
-.seo-shots img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;background:#fff;transition:transform .25s}
+.seo-shots img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:left top;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;background:#fff;transition:transform .25s}
 .seo-shots figure:first-child img{aspect-ratio:auto}
 .seo-shots img:hover{transform:scale(1.02)}
 .seo-shots img:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -535,6 +535,38 @@ footer{background:var(--ink);color:var(--muted-dark);padding:72px 0 28px;overflo
 .seo-foot{border-top:1px solid var(--line);padding-top:28px;color:var(--muted)}
 .seo-foot a{color:var(--accent-ink);font-weight:600}
 @media (max-width:1000px){.seo-case{grid-template-columns:1fr}.seo-sum{grid-template-columns:1fr 1fr}}
+.seo-main{padding-top:40px}
+.seo-main .seo-credit,.seo-credit{display:inline-block;font-style:normal;font-weight:600;font-size:13px;letter-spacing:.04em;padding:4px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);margin-top:6px}
+.seo-wide{grid-column:1/-1}
+.seo-duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.seo-chart{margin:0;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:22px}
+.seo-chart figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin-bottom:18px}
+.seo-chart figcaption b{font-size:17px}
+.seo-chart figcaption span{font-size:13px;color:var(--muted)}
+.seo-chart ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,1fr);gap:6px;align-items:end;height:220px}
+.seo-chart li{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:12px;color:var(--muted)}
+.seo-chart li b{font-size:13px;color:var(--ink);margin-bottom:4px}
+.seo-chart li::before{content:"";order:1;width:100%;height:var(--h);min-height:6px;border-radius:6px 6px 2px 2px;background:#D8CFC0}
+.seo-chart li b{order:0}
+.seo-chart li span{order:2;margin-top:6px;white-space:nowrap;font-size:11px}
+.seo-chart li.hot::before{background:var(--accent)}
+.seo-chart li.hot b{color:var(--accent-ink)}
+.seo-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.seo-table{width:100%;border-collapse:collapse;font-size:15px}
+.seo-table caption{text-align:left;padding:16px 18px 6px;font-size:13px;color:var(--muted)}
+.seo-table th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 18px;border-bottom:1px solid var(--line)}
+.seo-table td{padding:9px 18px;border-bottom:1px solid var(--line)}
+.seo-table tr:last-child td{border-bottom:0}
+.seo-table td:nth-child(2){font-weight:700;color:var(--accent-ink);white-space:nowrap}
+.seo-table td:nth-child(3),.seo-table th:nth-child(3){text-align:right;white-space:nowrap}
+.seo-sub{font-size:20px;margin:8px 0 14px}
+.seo-shots-4{grid-template-columns:repeat(4,1fr)}
+.seo-shots-4 figure:first-child{grid-column:auto}
+.seo-shots-4 figure:first-child img{aspect-ratio:4/3}
+.seo-after{color:var(--muted);margin-top:18px}
+@media (max-width:1000px){.seo-duo{grid-template-columns:1fr}.seo-shots-4{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.seo-chart ol{gap:3px;height:180px}.seo-chart li span{font-size:9px}.seo-table{font-size:14px}.seo-table td,.seo-table th{padding:8px 12px}}
+
 @media (max-width:600px){.seo-sum{gap:10px}.seo-sum div{padding:16px}.seo-case{padding:36px 0}}
 @media (prefers-reduced-motion:reduce){.seo-shots img{transition:none}}
 @media (max-width:1000px){.pf-grid{grid-template-columns:repeat(2,1fr)}.pf-f-story{grid-template-columns:1fr}.pf-f-stats{grid-template-columns:1fr 1fr}}

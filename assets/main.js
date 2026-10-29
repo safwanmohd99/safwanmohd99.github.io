@@ -90,12 +90,12 @@ if (pfGrid) {
   };
   const closeImg = () => { lb.hidden = true; lastImg?.focus(); };
   document.addEventListener('click', e => {
-    const img = e.target.closest('.cs-gallery img, .pf-f-gallery img');
+    const img = e.target.closest('.cs-gallery img, .pf-f-gallery img, .seo-shots img');
     if (img) openImg(img);
   });
   // screenshots open with Enter or Space too
   document.addEventListener('keydown', e => {
-    const img = e.target.closest?.('.cs-gallery img, .pf-f-gallery img');
+    const img = e.target.closest?.('.cs-gallery img, .pf-f-gallery img, .seo-shots img');
     if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openImg(img); }
   });
   lb.addEventListener('click', closeImg);

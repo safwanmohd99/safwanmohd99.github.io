@@ -3,7 +3,7 @@
 Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in plain, simple language and do the technical work for him. Live at https://safwandigital.com (domain on Hostinger; that Hostinger account also hosts his client sites — never touch them).
 
 ## Positioning (keep consistent everywhere)
-- Full-time digital marketer at "a digital marketing agency in Bangalore" (do NOT name the agency), working remotely from Palakkad, Kerala.
+- Full-time digital marketer at "a digital marketing agency in Bangalore", working remotely from Palakkad, Kerala. The agency is ThinkB (spelled "ThinkB"). Only the portfolio and llms.txt name it, as "Done at ThinkB", and only for VSH Hospital, Ara Skin Clinic and Eterna Vita. All other case studies are his own work: give them no agency credit.
 - Freelance on the side: mainly 1–2 hour consultations; full projects only rarely. Never call him a full-time freelancer.
 - In digital marketing since 2021 (BA English → academy course → self-taught via agency, in-house, freelance).
 - A digital marketing generalist (Meta Ads, Google Ads, SEO, AI search), NOT a specialist. Never call him a specialist; healthcare and B2B are the industries he knows best.
@@ -11,6 +11,7 @@ Owner: Mohammed Safwan. He has no coding knowledge, so explain everything in pla
 - Industries: B2B services + healthcare (NMC guidelines). Markets: Kerala/India, UAE, Saudi Arabia, GCC. No ecommerce.
 - SEO target: "freelance digital marketer in Kerala", "digital marketer in Kerala", "digital marketing consultant Kerala".
 - No client results/numbers on the site until he provides real ones.
+- Portfolio has a separate "SEO & AI search" section (`#seo`) after the featured case: one `.seo-case` per brand with Search Console numbers, keyword list and screenshots (VSH Hospital, Bissan Ice, IEC UAE, Niyati Women and Pain Center, Eterna Vita, Asker Sweets). Screenshots from his Search Console have his Google profile photo covered.
 - Photos: `photo.jpg` (home hero), `safwan-portrait.jpg` (about), `safwan-outdoor.jpg` (about/home teaser), `safwan-casual.jpg` (services), `safwan-selfie.jpg` (blog covers), `safwan-trees.jpg` (about "Working with me"), `safwan-hello.webp` (contact page greeting). More photos for future covers: `safwan-green.jpg`, `safwan-white.jpg`, `safwan-mirror.jpg` (orange wall), `safwan-car.jpg`. Reel skill page uses `safwan-purple.webp` (hero), `safwan-green-car.webp` and `safwan-blue-car.webp` (its cover); these three exist only as small WebP files; use a different one per cover so posts don't all look the same. Pages show the smaller `.webp` copies (same names, e.g. `assets/photo.webp`); keep the `.jpg` originals for og:image, schema and the cover templates. `assets/avatar.webp` is the small face photo for the blog author circles. `assets/og-image.jpg` (1200×630, made from `_templates/og-image.html`) is the social share image for the main pages. Keep `llms.txt` and JSON-LD schema in sync with any bio changes.
 
 ## How the site works

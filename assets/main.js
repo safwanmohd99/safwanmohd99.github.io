@@ -125,6 +125,8 @@ const form = document.getElementById('contactForm');
 if (form) {
   const msg = document.getElementById('formMsg');
   const openedAt = Date.now();
+  // the FormSubmit address is built here, not written in the page, so bots that read the HTML can't post straight to it
+  const endpoint = ['https:', '', 'formsubmit.co', 'ajax', '1a269593e7568d51375bdcc6d6347187'].join('/');
   // simple sum puzzle; the field has no name, so the answer is never emailed
   const puzzle = document.getElementById('puzzle'), puzzleQ = document.getElementById('puzzleQ');
   let answer = 0;
@@ -155,11 +157,18 @@ if (form) {
       form.elements.phone.focus();
       return;
     }
+    // random-letter junk from bots: names with digits, one-word or very short messages
+    const nm = form.elements.name.value.trim(), tx = form.elements.message.value.trim();
+    if (/\d/.test(nm) || nm.length < 2 || tx.length < 12 || !/\s/.test(tx)) {
+      msg.textContent = 'Please enter your real name (no numbers) and tell me a little more about what you need, in a full sentence.';
+      msg.className = 'msg err';
+      return;
+    }
     const btn = form.querySelector('button');
     btn.disabled = true; btn.firstChild.textContent = 'Sending… ';
     msg.className = 'msg';
     try {
-      const res = await fetch(form.action, {method: 'POST', headers: {'Accept': 'application/json'}, body: new FormData(form)});
+      const res = await fetch(endpoint, {method: 'POST', headers: {'Accept': 'application/json'}, body: new FormData(form)});
       const data = await res.json();
       if (!res.ok || data.success === 'false' || data.success === false) {
         // FormSubmit explains its own problems (e.g. "needs activation"), so show that when it gives one

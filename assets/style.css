@@ -701,4 +701,5 @@ nav .links{order:2;margin-left:auto}
 @keyframes tyIn{to{opacity:1;transform:none}}
 @keyframes tyBurst{0%{opacity:1;transform:rotate(var(--a)) translateY(-34px) scale(.6)}100%{opacity:0;transform:rotate(var(--a)) translateY(-86px) scale(1)}}
 @media(max-width:760px){.ty{padding:60px 0 90px}}
-@media (prefers-reduced-motion:reduce){.ty-env,.ty-burst{display:none}.ty-phone{animation:none}.ty-ok{animation:none;transform:none}.ty-in{animation:none;opacity:1;transform:none}}
+@keyframes tyFlyCalm{0%{opacity:0;transform:translate(0,-24px)}25%,50%{opacity:1;transform:translate(0,0)}72%{opacity:1;transform:translate(0,115px) scale(.55)}73%,100%{opacity:0;transform:translate(0,115px) scale(.55)}}
+@media (prefers-reduced-motion:reduce){.ty-env{animation-name:tyFlyCalm}.ty-burst{display:none}.ty-in{animation-duration:.4s}}

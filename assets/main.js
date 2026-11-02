@@ -178,10 +178,8 @@ if (form) {
         return;
       }
       track('generate_lead', {form: 'contact', found_via: form.elements.found_via.value || 'not given'});
-      { const r = btn.getBoundingClientRect(); popEnquiry(r.left + r.width / 2, r.top); }
-      form.reset(); newPuzzle();
-      msg.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
-      msg.className = 'msg ok';
+      location.href = '/thank-you/';
+      return;
     } catch (err) {
       msg.textContent = 'Sorry, something went wrong. Please message me on WhatsApp or email instead.';
       msg.className = 'msg err';

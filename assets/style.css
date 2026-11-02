@@ -679,3 +679,23 @@ nav .links{order:2;margin-left:auto}
 .enquiry-pop em{color:#fff;font-size:17px}
 @keyframes enquiry-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}20%{opacity:1;transform:translate(-50%,-110%) scale(1)}100%{opacity:0;transform:translate(-50%,-280%) scale(1)}}
 @media (prefers-reduced-motion:reduce){.enquiry-pop{display:none}}
+
+/* thank-you page */
+.ty{padding:110px 0 120px;text-align:center;min-height:70vh;display:grid;align-items:center}
+.ty-wrap{display:flex;flex-direction:column;align-items:center}
+.ty-badge{position:relative;width:132px;height:132px;margin-bottom:34px;display:grid;place-items:center}
+.ty-badge::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);opacity:.14;animation:tyPulse 2.4s ease-out 1.1s infinite}
+.ty-badge svg{position:relative;width:132px;height:132px;stroke:var(--accent);stroke-width:6}
+.ty-ring{stroke-dasharray:327;stroke-dashoffset:327;animation:tyDraw .8s cubic-bezier(.6,.1,.2,1) .1s forwards}
+.ty-tick{stroke-dasharray:80;stroke-dashoffset:80;stroke:var(--on-night);animation:tyDraw .5s ease-out .75s forwards}
+.ty-burst i{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--accent);opacity:0;animation:tyBurst .9s ease-out var(--d) forwards}
+.ty-burst i:nth-child(3n){background:var(--on-night);width:5px;height:5px;margin:-2.5px}
+.ty-in{opacity:0;transform:translateY(14px);animation:tyIn .6s ease-out forwards;animation-delay:calc(.9s + var(--i)*.12s)}
+.ty .contact-h{margin-bottom:18px}
+.ty .lead{max-width:520px;margin:0 auto 36px}
+@keyframes tyDraw{to{stroke-dashoffset:0}}
+@keyframes tyIn{to{opacity:1;transform:none}}
+@keyframes tyPulse{0%{transform:scale(.9);opacity:.22}100%{transform:scale(1.5);opacity:0}}
+@keyframes tyBurst{0%{opacity:1;transform:rotate(var(--a)) translateY(-62px) scale(.6)}100%{opacity:0;transform:rotate(var(--a)) translateY(-118px) scale(1)}}
+@media(max-width:760px){.ty{padding:70px 0 90px}}
+@media (prefers-reduced-motion:reduce){.ty-ring,.ty-tick{animation:none;stroke-dashoffset:0}.ty-in{animation:none;opacity:1;transform:none}.ty-burst,.ty-badge::before{display:none}}

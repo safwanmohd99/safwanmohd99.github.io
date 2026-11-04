@@ -49,6 +49,7 @@
 - [Blog](https://safwandigital.com/blog/): lessons from real campaigns
 - [Contact](https://safwandigital.com/contact/): consultation enquiries
 - [Resources](https://safwandigital.com/resources/): free tools, Claude skills and guides he shares
+- [Meta Creator Marketing Hub guide](https://safwandigital.com/resources/meta-creator-hub-guide/): free step-by-step guide to checking a creator's audience and views in Meta before a collab, and getting permission for partnership ads
 - [Free Claude Reel editing skill](https://safwandigital.com/resources/claude-reel-skill/): free Claude skill that edits talking-head videos into Instagram Reels, with setup steps
 
 ## Blog posts

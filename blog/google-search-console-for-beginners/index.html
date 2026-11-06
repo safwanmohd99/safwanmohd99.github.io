@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Google Search Console for beginners: the 5 reports to check first | Mohammed Safwan</title>
+<meta name="description" content="A plain-English guide to Google Search Console for beginners: the 5 reports to check first, a worked example and how to check each one.">
+<meta property="og:title" content="Google Search Console for beginners: the 5 reports to check first">
+<meta property="og:description" content="A plain-English guide to Google Search Console for beginners: the 5 reports to check first, a worked example and how to check each one.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Safwan Digital">
+<link rel="canonical" href="https://safwandigital.com/blog/google-search-console-for-beginners/">
+<meta property="og:url" content="https://safwandigital.com/blog/google-search-console-for-beginners/">
+<meta property="og:image" content="https://safwandigital.com/blog/google-search-console-for-beginners/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css?v=22">
+<script src="/assets/theme.js?v=1"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BlogPosting","headline":"Google Search Console for beginners: the 5 reports to check first","description":"A plain-English guide to Google Search Console for beginners: the 5 reports to check first, a worked example and how to check each one.","datePublished":"2026-11-06","dateModified":"2026-11-06","inLanguage":"en-IN","mainEntityOfPage":"https://safwandigital.com/blog/google-search-console-for-beginners/","image":"https://safwandigital.com/blog/google-search-console-for-beginners/cover.jpg","author":{"@type":"Person","@id":"https://safwandigital.com/#person","name":"Mohammed Safwan","url":"https://safwandigital.com/about/"},"publisher":{"@type":"Person","@id":"https://safwandigital.com/#person","name":"Mohammed Safwan"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://safwandigital.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://safwandigital.com/blog/"},{"@type":"ListItem","position":3,"name":"Google Search Console for beginners: the 5 reports to check first","item":"https://safwandigital.com/blog/google-search-console-for-beginners/"}]},
+{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Google Search Console free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Google describes Search Console as a free service that helps you monitor, maintain and troubleshoot your site's presence in Google Search results. You don't have to sign up for it to be included in Google Search, but it shows you how Google sees your site."}}, {"@type": "Question", "name": "What is the difference between impressions and clicks in Search Console?", "acceptedAnswer": {"@type": "Answer", "text": "An impression is counted when your site appears in Search results. A click is counted when someone clicks your site from those results. CTR (click-through rate) is the click count divided by the impression count."}}, {"@type": "Question", "name": "What does \"Crawled - currently not indexed\" mean?", "acceptedAnswer": {"@type": "Answer", "text": "It means Google visited the page but did not add it to its index. Google says this is common because it doesn't index every page on the web, so it isn't always a problem. If it shows up for an important page, use the URL Inspection tool to check for things like blocked crawling."}}, {"@type": "Question", "name": "Does Request Indexing guarantee my page will appear on Google?", "acceptedAnswer": {"@type": "Answer", "text": "No. Request Indexing puts the page in Google's crawl queue after a quick check. Even a page marked \"URL is on Google\" is only eligible to appear in Search results, not guaranteed to appear. To ask for many new or updated pages at once, Google suggests submitting a sitemap."}}, {"@type": "Question", "name": "Should I submit a sitemap to Search Console?", "acceptedAnswer": {"@type": "Answer", "text": "It is a good idea. Submitting a sitemap tells Google where the file is and lets you see whether Google could read it. Google will also recrawl it on its own schedule. It doesn't guarantee that every URL in the sitemap will be crawled or indexed."}}]}
+]}
+</script>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="/" class="brand">Safwan<span>.</span></a>
+    <button class="menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+    <div class="links">
+      <a href="/services/">Services</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/about/">About</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/resources/">Resources</a>
+      <a href="/contact/" class="btn btn-accent">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="article-head">
+      <a href="/blog/" class="link" style="font-size:14px">← All posts</a>
+      <p class="eyebrow" style="margin:32px 0 0">SEO</p>
+      <h1>Google Search Console for beginners: the 5 reports to check first</h1>
+      <div class="byline">
+        <span class="avatar"><img src="/assets/avatar.webp" alt="" width="96" height="96" data-fallback>S</span>
+        <span><b>Mohammed Safwan</b><br>6 Nov 2026 · 8 min read</span>
+      </div>
+    </div>
+
+    <article class="prose">
+            <p class="tldr"><strong>Short answer:</strong> Search Console is Google's free tool that shows how your website appears in Google Search. As a beginner, check five things first: <strong>1) Performance</strong> (clicks, impressions, position), <strong>2) Page indexing</strong> (which pages Google has added), <strong>3) URL Inspection</strong> (the status of one page), <strong>4) Sitemaps</strong> (whether Google can read your sitemap) and <strong>5) Manual actions</strong> (whether Google has penalised your site). Everything below is checked against Google's own Search Console Help pages, and each report has a "how to check it" step.</p>
+
+      <p>Search Console looks scary the first time: lots of menus, graphs and warnings. You don't need all of it. These five reports answer the questions most business owners and new marketers have: <em>Is Google showing my site? For what searches? Are my pages in Google at all?</em></p>
+
+      <h2>Before the reports: add your website</h2>
+      <p>You sign in with a Google account and add your website as a <strong>property</strong>. There are two kinds:</p>
+      <ul>
+        <li><strong>Domain property:</strong> covers your whole domain (for example <code>example.com</code>) including www and non-www, http and https, and subdomains. You verify it with a DNS record. If you don't manage your domain's DNS, ask whoever does (your web developer or hosting company).</li>
+        <li><strong>URL-prefix property:</strong> covers only URLs that start with the exact address you enter, including http or https. Use it when you only want to track one folder or one version of the site.</li>
+      </ul>
+      <p>For most small business websites, a Domain property is the simplest, because you don't miss data from a version of the address you forgot about. A new property starts empty, so don't worry if the reports are blank on day one.</p>
+
+      <h2>Report 1: Performance. Are people finding and clicking my site?</h2>
+      <p>This is the report you will use most. It shows how your site performs in Google Search. By default it shows the past three months. There are four numbers:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Metric</th><th>What Google says it is</th></tr></thead>
+          <tbody>
+            <tr><td>Clicks</td><td>How many times someone clicked your site from Google Search results</td></tr>
+            <tr><td>Impressions</td><td>How many times your site appeared in Search results</td></tr>
+            <tr><td>CTR</td><td>Click-through rate: clicks divided by impressions</td></tr>
+            <tr><td>Average position</td><td>The average position of the topmost result from your site</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Under the chart, the tabs (Queries, Pages, Countries, Devices, Dates) group the same numbers in different ways. You can also switch the chart between daily, weekly and monthly views. Weekly and monthly views smooth out ups and downs caused by weekends or holidays, so they are better for spotting a real trend.</p>
+
+      <h3>Worked example (sample data, not a client result)</h3>
+      <p>Imagine a small dental clinic website. This is what the Queries tab could look like for one month. These numbers are made up to show how to read the table.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Query</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th></tr></thead>
+          <tbody>
+            <tr><td>dental clinic palakkad</td><td>25</td><td>250</td><td>10%</td><td>3.1</td></tr>
+            <tr><td>dentist in palakkad</td><td>42</td><td>1,200</td><td>3.5%</td><td>6.2</td></tr>
+            <tr><td>root canal cost palakkad</td><td>18</td><td>600</td><td>3%</td><td>8.4</td></tr>
+            <tr><td>best dental clinic near me</td><td>3</td><td>1,500</td><td>0.2%</td><td>14.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>How to read it:</strong> the last row has the most impressions but almost no clicks, and the average position is 14.8, which is usually page 2. People rarely get that far, so the fix is not a better title. The page needs to rank higher first. The first row is the opposite: few impressions but a good position and a 10% CTR. That is a search worth protecting. The middle rows (positions 6 to 8) are the ones where a better title, a clearer page and a link from another page on your site could bring more clicks.</p>
+      <p><strong>How to check it:</strong></p>
+      <ol>
+        <li>Open <strong>Performance</strong> and keep the default three months.</li>
+        <li>The default view shows clicks and impressions only, so click the CTR and Average position boxes above the chart to turn them on too.</li>
+        <li>Open the <strong>Queries</strong> tab and sort by Impressions. Find queries with many impressions and a low CTR.</li>
+        <li>Open the <strong>Pages</strong> tab and click one page to see only its queries.</li>
+        <li>Search the query yourself, but remember Google says results depend on the time, place, device and search history of the person searching, so you may not see exactly what the report shows.</li>
+      </ol>
+      <p>One more thing: the numbers in the chart and the table can differ slightly, because the chart counts by website and the Pages table counts by page. That is normal. The newest days can also be "preliminary" and are shown with a dotted line until the data settles.</p>
+
+      <p>Want help reading your own Performance report and deciding what to fix first? <a href="/contact/">Book a 1-hour consultation</a> and bring your Search Console open.</p>
+
+      <h2>Report 2: Page indexing. Which of my pages are in Google?</h2>
+      <p>A page can only show up in Google if Google has <strong>indexed</strong> it, meaning it has crawled the page and added it to its index. The Page indexing report shows how many of your pages are <strong>Indexed</strong> and how many are <strong>Not indexed</strong>, with the reason for each group.</p>
+      <p>Two things from Google's own guidance are worth remembering:</p>
+      <ul>
+        <li><strong>"Not indexed" is not always bad.</strong> Google says it is fine for a page not to be indexed for the right reasons, such as a robots.txt rule, a noindex tag, a duplicate page, or a 404 for a page you removed. Your important pages are what matter.</li>
+        <li><strong>Small sites may not need this report every day.</strong> Google says a site with fewer than 500 pages probably doesn't need it and can check key pages another way (see Report 3). It is still worth one look when you start, because the reasons tell you a lot.</li>
+      </ul>
+      <p>Here are the reasons beginners meet most, in Google's words, with what to do:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Reason shown</th><th>What Google says</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td>Crawled - currently not indexed</td><td>Google crawled the page but didn't index it. Common, and not always a problem.</td><td>If it's an important page, inspect it with URL Inspection and check it isn't blocked.</td></tr>
+            <tr><td>Discovered - currently not indexed</td><td>Google found the URL but hasn't crawled it yet; the crawl was rescheduled, typically to avoid overloading the site.</td><td>Make sure the page is linked from other pages and is in your sitemap, then wait.</td></tr>
+            <tr><td>Duplicate without user-selected canonical</td><td>The page is a duplicate of another, and Google chose the other one as the main version. Not an error.</td><td>If Google picked the wrong one, set the canonical tag yourself.</td></tr>
+            <tr><td>Page with redirect</td><td>This URL redirects to another page, so it isn't indexed. The target page may be.</td><td>Usually nothing. Check the target page is indexed.</td></tr>
+            <tr><td>Excluded by "noindex" tag</td><td>The page tells Google not to index it.</td><td>Fine if intended. If not, remove the noindex tag and request indexing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>How to check it:</strong></p>
+      <ol>
+        <li>Open the <strong>Pages</strong> report (Page indexing) and look at the Indexed and Not indexed totals.</li>
+        <li>Scroll to "Why pages aren't indexed" and click each reason to see the example URLs.</li>
+        <li>For each reason, ask one question: <em>should this page be in Google?</em> If it is a thank-you page or an old redirect, leave it. If it is a service page or a blog post, fix it.</li>
+        <li>After you fix a problem on all affected pages, click <strong>Validate fix</strong>. Google says validation typically takes up to about two weeks.</li>
+      </ol>
+
+      <h2>Report 3: URL Inspection. What does Google know about this one page?</h2>
+      <p>Paste any URL from your site into the search bar at the top of Search Console. URL Inspection shows the status of that page in Google's index: whether it is indexed, when Google last crawled it, whether crawling and indexing are allowed, and which page Google chose as the main (canonical) version.</p>
+      <p>Two things beginners get wrong:</p>
+      <ul>
+        <li><strong>The first result is not live.</strong> It shows the version Google saw at its last crawl. To test the page as it is today, run <strong>Test live URL</strong>.</li>
+        <li><strong>"URL is on Google" is not a ranking promise.</strong> It means the page is eligible to appear in Search results. It does not guarantee that it shows up. For a definitive check, search for the page URL on Google.</li>
+      </ul>
+      <p>The <strong>Request indexing</strong> button asks Google to crawl a page. If the page passes a quick check, it goes into the indexing queue. You can't request indexing for a page that the live test says is not indexable. Google's advice for many new or updated pages is to submit a sitemap instead, with updated pages marked using <code>&lt;lastmod&gt;</code>.</p>
+      <p><strong>How to check it (for a page you just published):</strong></p>
+      <ol>
+        <li>Paste the full URL into the search bar at the top and press Enter.</li>
+        <li>If it says "URL is not on Google", open the details and read the reason.</li>
+        <li>Click <strong>Test live URL</strong>. Under page availability, confirm that crawling is allowed, the page fetch is successful and indexing is allowed.</li>
+        <li>Check <strong>User-declared canonical</strong> and <strong>Google-selected canonical</strong>. For a normal page they should be the same address.</li>
+        <li>If everything is fine and the page is new, click <strong>Request indexing</strong> once. Google says a new page or site can take a week or so to be crawled and indexed.</li>
+      </ol>
+
+      <h2>Report 4: Sitemaps. Can Google read my sitemap?</h2>
+      <p>A sitemap is a file that lists the pages you want Google to know about. "Submitting" it in Search Console means telling Google where the file is. You can't upload it there. You need owner permission on the property to submit one.</p>
+      <p>Each submitted sitemap shows a status:</p>
+      <ul>
+        <li><strong>Success:</strong> Google fetched and read it without errors.</li>
+        <li><strong>Has errors:</strong> Google could read it, but found problems. The pages it could read are still queued.</li>
+        <li><strong>Couldn't fetch:</strong> Google couldn't get the file at all. Open the row for the reason, fix it and submit again.</li>
+      </ul>
+      <p>The "Discovered pages" number is how many URLs Google found in the file. Google is clear that a page being in a sitemap doesn't guarantee it will be crawled or indexed. Also note that the report only lists sitemaps submitted through the report (or the API), and it doesn't follow redirects, so submit the exact final address of the file.</p>
+      <p><strong>How to check it:</strong></p>
+      <ol>
+        <li>Open your sitemap address in a browser (usually <code>yourdomain.com/sitemap.xml</code>) and confirm you can see a list of your pages.</li>
+        <li>Open <strong>Sitemaps</strong> in Search Console, paste the address into "Add a new sitemap" and press Submit.</li>
+        <li>Confirm the status says <strong>Success</strong> and that Discovered pages is close to the number of pages you expect.</li>
+        <li>If your sitemap is missing pages, update the file first, then check again.</li>
+      </ol>
+
+      <h2>Report 5: Manual actions. Has Google penalised my site?</h2>
+      <p>A manual action is when a human reviewer at Google decides pages on your site don't follow Google's spam policies. Google says that when this happens, some or all of the site may be ranked lower or left out of search results, often without any visible sign to visitors. Most sites will never see one.</p>
+      <p><strong>How to check it:</strong> open the <strong>Manual actions</strong> report. If your site has none, you'll see a green check mark and a message saying so. If there is one, read the description, which says whether it affects the whole site or specific pages. Fix the problem on all affected pages, then click <strong>Request review</strong> and explain what you changed. Google says reviews can take several days or weeks, and you shouldn't resubmit before you get a decision.</p>
+      <p>A separate <strong>Security issues</strong> report sits in the same menu, so look at both when you have a drop in traffic and no other explanation.</p>
+
+      <h2>Common beginner mistakes</h2>
+      <ul>
+        <li><strong>Judging a page by one search.</strong> Google results change by person, place and device. Use the Performance report for the full picture.</li>
+        <li><strong>Panicking about every "Not indexed" line.</strong> Check the reason first, and ask whether the page should be in Google.</li>
+        <li><strong>Clicking Request indexing again and again.</strong> One request is enough. Fix the cause if the page still isn't indexed.</li>
+        <li><strong>Ignoring the data for weeks.</strong> A short monthly look at these five reports catches most problems early.</li>
+        <li><strong>Making changes on small movements.</strong> Daily numbers jump around. Use the weekly or monthly view before deciding something is broken.</li>
+      </ul>
+
+      <h3>Related reading</h3>
+      <ul>
+        <li><a href="/blog/how-to-use-claude-for-seo/">How to use Claude for SEO</a>, including how to review a Search Console export with Claude</li>
+        <li><a href="/blog/five-free-seo-chrome-extensions-that-will-save-you-time-and-effort/">Five free SEO Chrome extensions that save time</a></li>
+        <li><a href="/services/seo/">SEO consultant services in Kerala</a></li>
+        <li><a href="/portfolio/#seo">SEO and AI search case studies with Search Console results</a></li>
+      </ul>
+
+      <hr>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>Is Google Search Console free?</summary><p>Yes. Google describes Search Console as a free service that helps you monitor, maintain and troubleshoot your site's presence in Google Search results. You don't have to sign up for it to be included in Google Search, but it shows you how Google sees your site.</p></details>
+        <details><summary>What is the difference between impressions and clicks in Search Console?</summary><p>An impression is counted when your site appears in Search results. A click is counted when someone clicks your site from those results. CTR (click-through rate) is the click count divided by the impression count.</p></details>
+        <details><summary>What does "Crawled - currently not indexed" mean?</summary><p>It means Google visited the page but did not add it to its index. Google says this is common because it doesn't index every page on the web, so it isn't always a problem. If it shows up for an important page, use the URL Inspection tool to check for things like blocked crawling.</p></details>
+        <details><summary>Does Request Indexing guarantee my page will appear on Google?</summary><p>No. Request Indexing puts the page in Google's crawl queue after a quick check. Even a page marked "URL is on Google" is only eligible to appear in Search results, not guaranteed to appear. To ask for many new or updated pages at once, Google suggests submitting a sitemap.</p></details>
+        <details><summary>Should I submit a sitemap to Search Console?</summary><p>It is a good idea. Submitting a sitemap tells Google where the file is and lets you see whether Google could read it. Google will also recrawl it on its own schedule. It doesn't guarantee that every URL in the sitemap will be crawled or indexed.</p></details>
+      </div>
+
+      <h3>Sources</h3>
+      <p>All pages are Google's own Search Console Help pages, checked on 6 November 2026.</p>
+      <ul>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/9128668" target="_blank" rel="noopener">About Search Console</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/34592" target="_blank" rel="noopener">Add a website or platform property to Search Console</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/7576553" target="_blank" rel="noopener">Performance report (Search results): Overview and basic setup</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/7440203" target="_blank" rel="noopener">Page indexing report</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/9012289" target="_blank" rel="noopener">URL Inspection tool</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/7451001" target="_blank" rel="noopener">Sitemaps report</a></li>
+        <li>Search Console Help, <a href="https://support.google.com/webmasters/answer/9044175" target="_blank" rel="noopener">Manual actions report</a></li>
+      </ul>
+    </article>
+
+    <div class="author-box">
+      <span class="avatar"><img src="/assets/avatar.webp" alt="" width="96" height="96" data-fallback>S</span>
+      <p><b><a href="/about/" style="color:inherit">Mohammed Safwan</a></b> is a digital marketer from Palakkad, Kerala, in digital marketing since 2021, working on Meta Ads, Google Ads and SEO for B2B and healthcare brands in India and the GCC. <a href="/contact/" style="color:var(--accent-ink)">Work with me →</a></p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-block">
+        <h2>Want a second pair of eyes on your Search <em>Console?</em></h2>
+        <a href="/contact/" class="btn">Book a consultation <svg><use href="/assets/icons.svg#arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div><p style="max-width:340px">Digital marketer from Palakkad, Kerala. B2B and healthcare marketing for brands in India and the GCC.</p><p class="foot-phone">Call or WhatsApp: <a href="tel:+917907678846">+91 79076 78846</a></p></div>
+      <nav>
+        <div><p class="fh">Pages</p><a href="/services/">Services</a><br><a href="/portfolio/">Portfolio</a><br><a href="/about/">About</a><br><a href="/blog/">Blog</a><br><a href="/resources/">Resources</a><br><a href="/contact/">Contact</a></div>
+        <div><p class="fh">Follow</p><a href="https://www.linkedin.com/in/mohammedsafwan-/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#in"/></svg>LinkedIn</a><br><a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#ig"/></svg>Instagram</a><br><a href="https://www.youtube.com/@safwan.99" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#yt"/></svg>YouTube</a><br><a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#fb"/></svg>Facebook</a></div>
+      </nav>
+    </div>
+    <div class="wordmark">Safwan<em>.</em></div>
+    <div class="foot-bottom"><span>© <span class="yr"></span> Mohammed Safwan · <a href="/privacy-policy/">Privacy policy</a></span><span>Palakkad · Kerala · India</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/917907678846" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
+
+<script src="/assets/main.js?v=13"></script>
+</body>
+</html>

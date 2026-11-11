@@ -6,6 +6,16 @@ document.addEventListener('click', e => {
   if (a.href.includes('wa.me/')) track('whatsapp_click', {link_url: a.href});
   else if (a.href.startsWith('tel:')) track('phone_click', {link_url: a.href});
   else if (a.href.startsWith('mailto:')) track('email_click', {link_url: a.href});
+  else if (a.dataset.course) track('course_click', {course_id: a.dataset.course});
+});
+
+// "Share this page" buttons: phone share sheet, or copy the link
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-share]');
+  if (!b) return;
+  const url = location.href.split('#')[0];
+  if (navigator.share) navigator.share({title: document.title, url}).catch(() => {});
+  else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { b.textContent = 'Link copied'; });
 });
 
 // if a photo is missing, remove it so the "S" monogram or plain card shows instead

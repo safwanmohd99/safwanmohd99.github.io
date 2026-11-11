@@ -70,6 +70,8 @@ Editorial style: cream paper `#F5F1EA`, ink `#15130F`, one accent orange `#FF5A1
 ### Instagram Story image for a post
 When he shares a post as an IG Story: 1080×1920 PNG from `_templates/ig-story.html` (same photo as the post's cover, "New on the blog" label, title with one `<em>` word, up to three short points, "Tap the link to read ↓" with empty space below for the link sticker, Safwan. + safwandigital.com at the bottom; keep text out of the top ~240px and bottom ~120px). Serve the repo root locally, screenshot with headless Chromium, and send him the file; it is not committed.
 
+- `/resources/free-digital-marketing-courses/` is the landing page for the "comment COURSE" Reels (English + Malayalam): 5 free courses (Google Skillshop, HubSpot x2, Semrush, Meta Blueprint) plus one clearly marked PAID option (Senator We Run Ads, Ovais Ahmad; not an affiliate link, not a promotion, no price shown). Rules: never gate the links, phone first, official links only, facts only as checked on 11 Nov 2026 (re-check the Semrush link after its platform move on 16 Dec 2026). Its hero photo (`safwan.webp`) and course images live in that folder. The last section is a CTA for a paid, hourly consultation (career or business). `main.js` sends a GA4 `course_click` event for links with `data-course`, and any `<button data-share>` opens the phone share sheet or copies the link.
+
 ## Adding a resource (freebie)
 Resources are things people download or use (Claude skills, templates, checklists), often promised in a Reel. Not blog posts.
 1. Short slug, e.g. `meta-ads-checklist`. Page at `resources/<slug>/index.html`, built like `resources/claude-reel-skill/` (same head, CSP, header with Resources active, footer). Files to download go in the same folder.

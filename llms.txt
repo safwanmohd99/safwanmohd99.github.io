@@ -53,6 +53,11 @@
 - [Faceless 3D reels with AI](https://safwandigital.com/resources/faceless-3d-reel/): free Claude skill plus step-by-step process (AI script, ElevenLabs voiceover, 3D visuals) for making faceless explainer reels
 - [Meta Creator Marketing Hub guide](https://safwandigital.com/resources/meta-creator-hub-guide/): free step-by-step guide to checking a creator's audience and views in Meta before a collab, and getting permission for partnership ads
 - [Free Claude Reel editing skill](https://safwandigital.com/resources/claude-reel-skill/): free Claude skill that edits talking-head videos into Instagram Reels, with setup steps
+- [Google Tag Manager guides for beginners](https://safwandigital.com/resources/google-tag-manager/): hub page linking to four step-by-step guides: GTM setup, GA4 with GTM, Google Ads conversion tracking with GTM, and Meta Pixel with GTM
+  - [How to set up GTM](https://safwandigital.com/resources/google-tag-manager/setup/)
+  - [GA4 with GTM](https://safwandigital.com/resources/google-tag-manager/google-analytics/)
+  - [Google Ads conversion tracking with GTM](https://safwandigital.com/resources/google-tag-manager/google-ads-conversion-tracking/)
+  - [Meta Pixel with GTM](https://safwandigital.com/resources/google-tag-manager/meta-pixel/)
 
 ## Blog posts
 - [Google Search Console for beginners: the 5 reports to check first](https://safwandigital.com/blog/google-search-console-for-beginners/)

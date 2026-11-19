@@ -49,6 +49,7 @@
 - [Blog](https://safwandigital.com/blog/): lessons from real campaigns
 - [Contact](https://safwandigital.com/contact/): consultation enquiries
 - [Resources](https://safwandigital.com/resources/): free tools, Claude skills and guides he shares
+- [15 free digital marketing tools](https://safwandigital.com/resources/free-digital-marketing-tools/): list of 15 free tools for SEO, ads research and analytics (Search Console, Bing Webmaster Tools, Screaming Frog, Ubersuggest, AnswerThePublic, Meta/Google/LinkedIn ad libraries, Keyword Planner, Trends, GA4, Clarity, Looker Studio, PageSpeed Insights, Canva) with official links
 - [5 free digital marketing courses](https://safwandigital.com/resources/free-digital-marketing-courses/): free beginner courses from Google Skillshop, HubSpot Academy, Semrush Academy and Meta Blueprint, with what each covers, who it is for and the official links
 - [Faceless 3D reels with AI](https://safwandigital.com/resources/faceless-3d-reel/): free Claude skill plus step-by-step process (AI script, ElevenLabs voiceover, 3D visuals) for making faceless explainer reels
 - [Meta Creator Marketing Hub guide](https://safwandigital.com/resources/meta-creator-hub-guide/): free step-by-step guide to checking a creator's audience and views in Meta before a collab, and getting permission for partnership ads

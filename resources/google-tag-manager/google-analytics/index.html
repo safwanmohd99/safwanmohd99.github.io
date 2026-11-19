@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>How to Set Up Google Analytics (GA4) with Google Tag Manager</title>
+<meta name="description" content="Step-by-step guide to set up Google Analytics 4 through Google Tag Manager. Add your first GA4 tag, test it in Preview Mode and check the Realtime report.">
+<link rel="canonical" href="https://safwandigital.com/resources/google-tag-manager/google-analytics/">
+<meta property="og:title" content="How to Set Up Google Analytics (GA4) with Google Tag Manager">
+<meta property="og:description" content="Your first GTM tag: connect GA4 in minutes. Step-by-step setup, Preview Mode testing and Enhanced Measurement explained.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Safwan Digital">
+<meta property="og:url" content="https://safwandigital.com/resources/google-tag-manager/google-analytics/">
+<meta property="og:image" content="https://safwandigital.com/resources/google-tag-manager/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="How to set up GA4 with Google Tag Manager — guide by Mohammed Safwan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css?v=22">
+<script src="/assets/theme.js?v=1"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://safwandigital.com/resources/google-tag-manager/google-analytics/#page","url":"https://safwandigital.com/resources/google-tag-manager/google-analytics/","name":"How to Set Up Google Analytics (GA4) with Google Tag Manager","description":"Step-by-step guide to set up Google Analytics 4 through Google Tag Manager. Add your first GA4 tag, test it and check the Realtime report.","inLanguage":"en-IN","author":{"@id":"https://safwandigital.com/#person"},"isPartOf":{"@id":"https://safwandigital.com/#website"},"image":"https://safwandigital.com/resources/google-tag-manager/cover.jpg","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://safwandigital.com/"},{"@type":"ListItem","position":2,"name":"Resources","item":"https://safwandigital.com/resources/"},{"@type":"ListItem","position":3,"name":"Google Tag Manager guides","item":"https://safwandigital.com/resources/google-tag-manager/"},{"@type":"ListItem","position":4,"name":"GA4 setup","item":"https://safwandigital.com/resources/google-tag-manager/google-analytics/"}]}},{"@type":"HowTo","@id":"https://safwandigital.com/resources/google-tag-manager/google-analytics/#howto","name":"How to set up Google Analytics (GA4) with Google Tag Manager","step":[{"@type":"HowToStep","name":"Get your GA4 Measurement ID"},{"@type":"HowToStep","name":"Open GTM and create a new tag"},{"@type":"HowToStep","name":"Choose the Google Tag type"},{"@type":"HowToStep","name":"Enter your Measurement ID"},{"@type":"HowToStep","name":"Set the trigger to All Pages"},{"@type":"HowToStep","name":"Save and test with Preview Mode"},{"@type":"HowToStep","name":"Publish the container"},{"@type":"HowToStep","name":"Check the GA4 Realtime report"}]},{"@type":"FAQPage","@id":"https://safwandigital.com/resources/google-tag-manager/google-analytics/#faq","mainEntity":[{"@type":"Question","name":"Do I still need the GA4 code on my website if I use GTM?","acceptedAnswer":{"@type":"Answer","text":"No. If you set up GA4 through GTM, remove any direct gtag.js code from your website. Having both sends data twice, which inflates your numbers."}},{"@type":"Question","name":"What is Enhanced Measurement?","acceptedAnswer":{"@type":"Answer","text":"Enhanced Measurement is GA4's built-in tracking for scrolls (at 90% depth), outbound clicks, file downloads, YouTube video engagement and site search. These are tracked automatically once GA4 is connected — no extra GTM setup needed. You can toggle each one on or off in GA4 under Admin, Data Streams, Enhanced Measurement."}},{"@type":"Question","name":"How do I know GA4 is working?","acceptedAnswer":{"@type":"Answer","text":"After publishing your GTM container, open your website in a browser and then check the GA4 Realtime report (Reports, Realtime). You should see your own visit appear within a minute or two."}},{"@type":"Question","name":"Can I track form submissions with this setup?","acceptedAnswer":{"@type":"Answer","text":"The basic GA4 tag tracks page views and Enhanced Measurement events. For reliable form submission tracking, you need a custom event tag in GTM with a trigger that fires when the form is submitted. That is a separate setup on top of what this guide covers."}},{"@type":"Question","name":"What if I already installed GA4 directly on my website?","acceptedAnswer":{"@type":"Answer","text":"Remove the direct GA4 code (the gtag.js snippet) from your website first, then set up GA4 through GTM as shown in this guide. If you leave both, every visit and event is counted twice."}}]}]}
+</script>
+<style>
+.ga4-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:48px 0 0;flex-wrap:wrap}
+.ga4-flow-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;text-align:center;min-width:150px}
+.ga4-flow-box b{display:block;font-size:15px;color:var(--ink)}
+.ga4-flow-box span{font-size:13px;color:var(--muted)}
+.ga4-flow-box.accent{border-color:var(--accent);background:var(--accent-soft)}
+.ga4-flow-box.accent b{color:var(--accent-ink)}
+.ga4-flow-box.accent span{color:var(--accent-ink)}
+.ga4-flow-arrow{color:var(--accent);font-size:28px;padding:0 8px;flex-shrink:0}
+.em-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.em-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px}
+.em-card h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.em-card p{font-size:14px;color:var(--muted);line-height:1.45}
+.em-card .auto{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#E0F2FE;color:#0369A1;border-radius:99px;padding:3px 10px;margin-bottom:10px}
+@media(max-width:700px){
+  .ga4-flow{flex-direction:column}
+  .ga4-flow-arrow{transform:rotate(90deg)}
+  .em-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="/" class="brand">Safwan<span>.</span></a>
+    <button class="menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+    <div class="links">
+      <a href="/services/">Services</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/about/">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/resources/" class="active">Resources</a>
+      <a href="/contact/" class="btn btn-accent">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="page-hero" style="padding-bottom:40px">
+  <div class="wrap sk-hero">
+    <div>
+      <span class="eyebrow">Guide 2 of 4 · Google Tag Manager</span>
+      <h1>Set up Google Analytics with <em>GTM.</em></h1>
+      <p class="lead">Your first tag. One setup and GA4 starts tracking page views, scrolls and outbound clicks on your website automatically. This guide shows every step, from finding your Measurement ID to checking the Realtime report.</p>
+      <div class="cta">
+        <a href="#steps" class="btn btn-accent">See the steps <svg><use href="/assets/icons.svg#arrow"/></svg></a>
+        <a href="#enhanced" class="btn btn-line">What GA4 tracks automatically</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <span class="mono">S</span>
+      <img src="/assets/safwan-trees.webp" alt="Mohammed Safwan, digital marketer in Kerala, explaining how to connect GA4 with GTM" width="720" height="900" fetchpriority="high" data-fallback style="object-position:50% 30%">
+      <div class="status"><i></i> Free guide · No sign-up</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>1 tag<em>.</em></b><span>That is all you need</span></div>
+      <div class="stat"><b>8</b><span>Steps in this guide</span></div>
+      <div class="stat"><b>Free<em>.</em></b><span>GA4 and GTM cost nothing</span></div>
+      <div class="stat"><b>5 min</b><span>Setup time</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- How it connects -->
+<section style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">How it works</span>
+        <h2 class="h2">One tag connects <em>everything.</em></h2>
+      </div>
+      <p class="lead">GTM fires the GA4 tag on every page load. GA4 receives the data and shows it in your reports.</p>
+    </div>
+
+    <div class="ga4-flow">
+      <div class="ga4-flow-box"><b>Your website</b><span>GTM container installed</span></div>
+      <div class="ga4-flow-arrow">→</div>
+      <div class="ga4-flow-box accent"><b>GTM fires GA4 tag</b><span>On every page load</span></div>
+      <div class="ga4-flow-arrow">→</div>
+      <div class="ga4-flow-box"><b>GA4 receives data</b><span>Measurement ID: G-XXXXXXX</span></div>
+      <div class="ga4-flow-arrow">→</div>
+      <div class="ga4-flow-box"><b>You see reports</b><span>Realtime, pages, events</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Prerequisites -->
+<section>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Before you start</span>
+        <h2 class="h2">What you <em>need.</em></h2>
+      </div>
+      <p class="lead">Three things. If any is missing, set it up first.</p>
+    </div>
+    <div class="sk-notes">
+      <div class="focus"><span class="n">01</span><h3>GTM installed on your website</h3><p>You need a working Google Tag Manager container on your site. If you haven't done that yet, follow <a href="/resources/google-tag-manager/setup/">Guide 1: How to set up GTM</a> first and come back here.</p></div>
+      <div class="focus"><span class="n">02</span><h3>A Google Analytics 4 property</h3><p>Go to <b>analytics.google.com</b>. If you don't have an account, click <b>Start measuring</b> and follow the steps: name your account, create a property (pick your country and time zone), and add a <b>Web</b> data stream with your website URL. Google creates the property and the data stream for you.</p></div>
+      <div class="focus"><span class="n">03</span><h3>Your Measurement ID</h3><p>This is the code that starts with <b>G-</b> followed by letters and numbers (e.g. G-ABC123XYZ). You will copy it from GA4 in Step 1 below. It tells GTM which GA4 property to send data to.</p></div>
+    </div>
+    <div class="sk-credit" style="margin-top:28px"><strong>Already have GA4 installed directly on your website?</strong> You can switch to GTM, but remove the direct GA4 code (the gtag.js snippet) from your website first. If both are active, every visit and event gets counted twice.</div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="dark" id="steps">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Step by step</span>
+        <h2 class="h2">From Measurement ID to <em>live data.</em></h2>
+      </div>
+      <p class="lead">Follow these eight steps in order. The whole setup takes about five minutes.</p>
+    </div>
+  </div>
+</section>
+<section style="padding-top:72px">
+  <div class="wrap">
+    <ol class="sk-steps">
+      <li>
+        <h3>Get your GA4 Measurement ID</h3>
+        <p>Open <b>Google Analytics</b> (analytics.google.com). In the bottom-left corner, click the <b>gear icon</b> to open <b>Admin</b>. Under your property, click <b>Data Streams</b>, then click your web data stream (the one with your website URL).</p>
+        <p>At the top of the stream details page, you will see <b>Measurement ID</b>. It looks like <b>G-ABC123XYZ</b>. Click the copy icon next to it. You will paste this into GTM in Step 4.</p>
+        <ul>
+          <li><b>Don't have a data stream?</b> Click <b>Add stream</b>, choose <b>Web</b>, enter your website URL and a name, then click <b>Create stream</b>. The Measurement ID appears immediately.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Open GTM and create a new tag</h3>
+        <p>Go to <b>tagmanager.google.com</b> and open your container (the one installed on your website). In the left-hand menu, click <b>Tags</b>, then click the <b>New</b> button in the top-right corner.</p>
+      </li>
+      <li>
+        <h3>Name the tag</h3>
+        <p>At the top of the tag editor, click <b>Untitled Tag</b> and give it a clear name. Something like <b>GA4 - Configuration</b> or <b>Google Analytics</b>. The name is just for you — it does not affect how the tag works.</p>
+        <ul>
+          <li>Use a naming pattern you can stick with. When you add more tags later (Google Ads, Meta Pixel), clear names make it easy to tell them apart.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Choose the tag type</h3>
+        <p>Click the large <b>Tag Configuration</b> area. GTM shows a list of tag types. Select <b>Google Tag</b> (it may also appear as <b>Google Analytics</b> or <b>GA4 Configuration</b>, depending on when your GTM workspace was last updated — they all do the same thing).</p>
+      </li>
+      <li>
+        <h3>Enter your Measurement ID</h3>
+        <p>In the <b>Tag ID</b> field, paste the Measurement ID you copied in Step 1 (the one that starts with <b>G-</b>). That is the only setting you need to fill in for the basic setup. Leave everything else at the default.</p>
+      </li>
+      <li>
+        <h3>Set the trigger to All Pages</h3>
+        <p>Scroll down and click the <b>Triggering</b> area below the tag configuration. Select <b>All Pages</b>. This means the GA4 tag will fire every time someone loads any page on your website.</p>
+        <p>Click <b>Save</b> in the top-right corner.</p>
+      </li>
+      <li>
+        <h3>Test with Preview Mode</h3>
+        <p>Before publishing, test it. Click the <b>Preview</b> button in the top-right of the GTM workspace. GTM opens <b>Tag Assistant</b>:</p>
+        <ul>
+          <li>Enter your website URL and click <b>Connect</b>.</li>
+          <li>Your website opens in a new tab. Navigate around it normally.</li>
+          <li>Go back to the Tag Assistant tab. Under <b>Tags Fired</b>, you should see your GA4 tag listed. If it appears under <b>Tags Not Fired</b>, check that your trigger is set to All Pages and that you saved the tag.</li>
+        </ul>
+        <p>Once you see it firing, your setup is correct.</p>
+      </li>
+      <li>
+        <h3>Publish the container</h3>
+        <p>Close Preview Mode. Back in the GTM workspace, click <b>Submit</b> in the top-right corner. Give the version a name (e.g. "Added GA4 tag") and click <b>Publish</b>.</p>
+        <p>Your GA4 tag is now live. Every visitor to your website will start sending data to Google Analytics.</p>
+      </li>
+    </ol>
+
+    <div class="sk-credit" style="margin-top:36px"><strong>Final check:</strong> Open your website in a browser, then go to GA4 → <b>Reports</b> → <b>Realtime</b>. Within a minute or two, you should see yourself as an active user. If you do, GA4 is working through GTM.</div>
+  </div>
+</section>
+
+<!-- Enhanced Measurement -->
+<section id="enhanced" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">What GA4 tracks automatically</span>
+        <h2 class="h2">Enhanced <em>Measurement.</em></h2>
+      </div>
+      <p class="lead">Once GA4 is connected, it tracks these actions on its own. No extra tags needed in GTM.</p>
+    </div>
+
+    <div class="em-grid">
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>Page views</h4>
+        <p>Tracked every time a page loads. Always on — cannot be turned off.</p>
+      </div>
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>Scrolls</h4>
+        <p>Fires when someone scrolls to 90% of the page. Only the 90% threshold — not 25% or 50%.</p>
+      </div>
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>Outbound clicks</h4>
+        <p>Tracks clicks on links that go to a different website.</p>
+      </div>
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>Site search</h4>
+        <p>Tracks when someone uses your website's search bar (based on URL parameters like <b>?q=</b>).</p>
+      </div>
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>YouTube videos</h4>
+        <p>Tracks play, progress and completion of YouTube videos embedded on your site.</p>
+      </div>
+      <div class="em-card">
+        <span class="auto">Automatic</span>
+        <h4>File downloads</h4>
+        <p>Tracks clicks on links to files like PDFs, spreadsheets and documents.</p>
+      </div>
+    </div>
+
+    <div class="sk-credit" style="margin-top:28px"><strong>Where to check these:</strong> In GA4, go to <b>Admin</b> → <b>Data Streams</b> → click your stream → <b>Enhanced Measurement</b>. You can toggle each event on or off. Leave them all on unless you have a specific reason to turn one off.</div>
+  </div>
+</section>
+
+<!-- What Enhanced Measurement does NOT track -->
+<section>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">What you still need GTM for</span>
+        <h2 class="h2">Custom events are <em>not automatic.</em></h2>
+      </div>
+      <p class="lead">Enhanced Measurement covers the basics. These common actions need their own tags in GTM.</p>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Action</th><th>Why it needs a custom setup</th></tr></thead>
+      <tbody>
+        <tr><td>Contact form submissions</td><td>GA4 may detect some form interactions, but for reliable tracking of a specific form (like your enquiry form), create a custom event tag with a trigger that fires on form submission.</td></tr>
+        <tr><td>WhatsApp button clicks</td><td>These are outbound clicks, so GA4 may catch them. But if you want a named event (like "whatsapp_click") that you can mark as a key event in GA4, set up a dedicated tag.</td></tr>
+        <tr><td>Phone number clicks</td><td>Clicks on <b>tel:</b> links are not tracked by Enhanced Measurement. You need a custom click trigger and a GA4 event tag.</td></tr>
+        <tr><td>Specific button clicks</td><td>Any button that is not a standard link (like a "Book now" button that opens a form) needs its own trigger and tag.</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:20px;color:var(--muted)">Setting up custom events is a more advanced topic. The <a href="/resources/google-tag-manager/google-ads-conversion-tracking/">Google Ads conversion tracking guide</a> and <a href="/resources/google-tag-manager/meta-pixel/">Meta Pixel guide</a> cover how triggers and custom events work in practice.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">Questions</span>
+      <h2 class="h2">Common <em>doubts.</em></h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Do I still need the GA4 code on my website if I use GTM?</summary><p>No. If you set up GA4 through GTM, remove any direct gtag.js code from your website. Having both sends data twice, which inflates your numbers.</p></details>
+      <details><summary>What is Enhanced Measurement?</summary><p>Enhanced Measurement is GA4's built-in tracking for scrolls (at 90% depth), outbound clicks, file downloads, YouTube video engagement and site search. These are tracked automatically once GA4 is connected — no extra GTM setup needed. You can toggle each one on or off in GA4 under Admin, Data Streams, Enhanced Measurement.</p></details>
+      <details><summary>How do I know GA4 is working?</summary><p>After publishing your GTM container, open your website in a browser and then check the GA4 Realtime report (Reports, Realtime). You should see your own visit appear within a minute or two.</p></details>
+      <details><summary>Can I track form submissions with this setup?</summary><p>The basic GA4 tag tracks page views and Enhanced Measurement events. For reliable form submission tracking, you need a custom event tag in GTM with a trigger that fires when the form is submitted. That is a separate setup on top of what this guide covers.</p></details>
+      <details><summary>What if I already installed GA4 directly on my website?</summary><p>Remove the direct GA4 code (the gtag.js snippet) from your website first, then set up GA4 through GTM as shown in this guide. If you leave both, every visit and event is counted twice.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Related + CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h3 style="font-size:clamp(18px,1.6vw,20px);margin-bottom:16px">Related reading</h3>
+    <ul style="color:var(--muted);font-size:17px;padding-left:1.2em">
+      <li><a href="/resources/google-tag-manager/setup/">Guide 1: How to set up GTM on your website</a> — the prerequisite for this guide</li>
+      <li><a href="/resources/google-tag-manager/google-ads-conversion-tracking/">Guide 3: Google Ads conversion tracking with GTM</a> — track which ad clicks become enquiries</li>
+      <li><a href="/resources/google-tag-manager/">All GTM guides</a> — the full set of four guides</li>
+      <li><a href="/blog/google-search-console-for-beginners/">Google Search Console for beginners</a> — the reports to check after GA4 is running</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-block">
+      <h2>Want help setting up analytics for <em>your business?</em></h2>
+      <a href="/contact/" class="btn">Book a consultation <svg><use href="/assets/icons.svg#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div><p style="max-width:340px">Digital marketer from Palakkad, Kerala. B2B and healthcare marketing for brands in India and the GCC.</p><p class="foot-phone">Call or WhatsApp: <a href="tel:+917907678846">+91 79076 78846</a></p></div>
+      <nav>
+        <div><p class="fh">Pages</p><a href="/services/">Services</a><br><a href="/portfolio/">Portfolio</a><br><a href="/about/">About</a><br><a href="/blog/">Blog</a><br><a href="/resources/">Resources</a><br><a href="/contact/">Contact</a></div>
+        <div><p class="fh">Follow</p><a href="https://www.linkedin.com/in/mohammedsafwan-/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#in"/></svg>LinkedIn</a><br><a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#ig"/></svg>Instagram</a><br><a href="https://www.youtube.com/@safwan.99" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#yt"/></svg>YouTube</a><br><a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#fb"/></svg>Facebook</a></div>
+      </nav>
+    </div>
+    <div class="wordmark">Safwan<em>.</em></div>
+    <div class="foot-bottom"><span>© <span class="yr"></span> Mohammed Safwan · <a href="/privacy-policy/">Privacy policy</a></span><span>Palakkad · Kerala · India</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/917907678846" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
+
+<script src="/assets/main.js?v=14"></script>
+</body>
+</html>

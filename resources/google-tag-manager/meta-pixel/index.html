@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>How to Set Up Meta Pixel with Google Tag Manager (Step by Step)</title>
+<meta name="description" content="Step-by-step guide to installing Meta Pixel through Google Tag Manager. Set up PageView, Lead events and test everything, with screenshots. Free, for beginners.">
+<link rel="canonical" href="https://safwandigital.com/resources/google-tag-manager/meta-pixel/">
+<meta property="og:title" content="How to Set Up Meta Pixel with Google Tag Manager">
+<meta property="og:description" content="Install Meta Pixel through GTM step by step. PageView, Lead events, testing with Pixel Helper. Free beginner guide.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Safwan Digital">
+<meta property="og:url" content="https://safwandigital.com/resources/google-tag-manager/meta-pixel/">
+<meta property="og:image" content="https://safwandigital.com/resources/google-tag-manager/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="How to set up Meta Pixel with Google Tag Manager — guide by Mohammed Safwan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css?v=22">
+<script src="/assets/theme.js?v=1"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://safwandigital.com/resources/google-tag-manager/meta-pixel/#page", "url": "https://safwandigital.com/resources/google-tag-manager/meta-pixel/", "name": "How to Set Up Meta Pixel with Google Tag Manager", "description": "Step-by-step guide to installing Meta Pixel through Google Tag Manager, including PageView and Lead event setup.", "inLanguage": "en-IN", "author": {"@id": "https://safwandigital.com/#person"}, "isPartOf": {"@id": "https://safwandigital.com/#website"}, "image": "https://safwandigital.com/resources/google-tag-manager/cover.jpg", "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://safwandigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://safwandigital.com/resources/"}, {"@type": "ListItem", "position": 3, "name": "Google Tag Manager guides", "item": "https://safwandigital.com/resources/google-tag-manager/"}, {"@type": "ListItem", "position": 4, "name": "Meta Pixel setup", "item": "https://safwandigital.com/resources/google-tag-manager/meta-pixel/"}]}}, {"@type": "HowTo", "@id": "https://safwandigital.com/resources/google-tag-manager/meta-pixel/#howto", "name": "How to set up Meta Pixel with Google Tag Manager", "step": [{"@type": "HowToStep", "name": "Get your Pixel ID from Meta Events Manager"}, {"@type": "HowToStep", "name": "Create a new tag in GTM"}, {"@type": "HowToStep", "name": "Find the Meta Pixel template in the Community Template Gallery"}, {"@type": "HowToStep", "name": "Configure the template with your Pixel ID"}, {"@type": "HowToStep", "name": "Set the trigger to All Pages"}, {"@type": "HowToStep", "name": "Preview and test with Tag Assistant"}, {"@type": "HowToStep", "name": "Test with Meta Events Manager or Pixel Helper"}, {"@type": "HowToStep", "name": "Publish the container"}, {"@type": "HowToStep", "name": "Add a Lead event tag for conversions"}]}, {"@type": "FAQPage", "@id": "https://safwandigital.com/resources/google-tag-manager/meta-pixel/#faq", "mainEntity": [{"@type": "Question", "name": "What is Meta Pixel?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Pixel is a small piece of tracking code from Meta that records what happens on your website after someone clicks your Facebook or Instagram ad. It helps Meta optimise your ads by showing them to people most likely to take action, and it lets you create retargeting audiences of people who visited your site."}}, {"@type": "Question", "name": "Where do I find my Pixel ID?", "acceptedAnswer": {"@type": "Answer", "text": "Open Meta Events Manager, click Data Sources on the left, select your Pixel, then click Settings. The Pixel ID is a long number, usually 15 to 16 digits. Copy it exactly as shown."}}, {"@type": "Question", "name": "Do I need both PageView and Lead events?", "acceptedAnswer": {"@type": "Answer", "text": "PageView fires on every page and tells Meta who visited your site. Lead or Contact fires only when someone takes a specific action, like submitting a form. You need both: PageView for retargeting audiences, and Lead or Contact for conversion optimisation so Meta can find more people like those who enquired."}}, {"@type": "Question", "name": "Can I install Meta Pixel without GTM?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, by adding the Pixel base code directly to your website's head section. But GTM makes it easier to manage, especially if you also run Google Analytics and Google Ads tracking. With GTM you change tags in one dashboard instead of editing website code each time."}}, {"@type": "Question", "name": "What is the Meta Pixel Helper?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Pixel Helper is a free Chrome extension by Meta. It shows you whether the Pixel is working on any page you visit, which events are firing and whether there are errors. It is useful for testing alongside GTM's Preview Mode."}}, {"@type": "Question", "name": "What about Conversions API (CAPI)?", "acceptedAnswer": {"@type": "Answer", "text": "Conversions API sends event data from your server instead of the visitor's browser. It is more reliable because ad blockers cannot stop it. But setting it up needs developer help or a partner integration. Start with the Pixel first; add CAPI later when your ad spend grows and you want more accurate data."}}]}]}
+</script>
+<style>
+.pixel-flow{display:flex;align-items:stretch;gap:0;margin:48px 0 0;flex-wrap:wrap;justify-content:center}
+.pixel-flow-step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:center;flex:1 1 120px;max-width:170px;display:flex;flex-direction:column;justify-content:center}
+.pixel-flow-step b{display:block;font-size:14px;color:var(--ink);line-height:1.3}
+.pixel-flow-step span{font-size:12px;color:var(--muted);line-height:1.3;margin-top:2px}
+.pixel-flow-step.highlight{background:var(--accent-soft);border-color:rgba(255,90,31,.35)}
+.pixel-flow-step.highlight b{color:var(--accent-ink)}
+.pixel-flow-arrow{color:var(--accent);font-size:24px;padding:0 6px;flex-shrink:0;display:flex;align-items:center}
+.event-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:24px}
+.event-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+.event-card b{font-size:15px;color:var(--ink);display:block;margin-bottom:4px}
+.event-card span{font-size:14px;color:var(--muted);line-height:1.4}
+@media(max-width:700px){
+  .pixel-flow{flex-direction:column;align-items:center}
+  .pixel-flow-step{max-width:100%;width:100%}
+  .pixel-flow-arrow{transform:rotate(90deg);padding:4px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="/" class="brand">Safwan<span>.</span></a>
+    <button class="menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+    <div class="links">
+      <a href="/services/">Services</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/about/">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/resources/" class="active">Resources</a>
+      <a href="/contact/" class="btn btn-accent">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="page-hero" style="padding-bottom:40px">
+  <div class="wrap sk-hero">
+    <div>
+      <span class="eyebrow">Guide 4 of 4 · Google Tag Manager</span>
+      <h1>Set up Meta Pixel with <em>GTM.</em></h1>
+      <p class="lead">If you run Facebook or Instagram ads, the Pixel tells Meta what happens after someone clicks. Without it, Meta is guessing. This guide walks you through installing it with Google Tag Manager, step by step.</p>
+      <div class="cta">
+        <a href="#steps" class="btn btn-accent">See the steps <svg><use href="/assets/icons.svg#arrow"/></svg></a>
+        <a href="#events" class="btn btn-line">Standard events</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <span class="mono">S</span>
+      <img src="/assets/safwan-white.webp" alt="Mohammed Safwan, digital marketer in Kerala, explaining Meta Pixel setup" width="720" height="900" fetchpriority="high" data-fallback style="object-position:50% 30%">
+      <div class="status"><i></i> Free guide · No sign-up</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>Free<em>.</em></b><span>Meta Pixel and GTM</span></div>
+      <div class="stat"><b>9</b><span>Steps in this guide</span></div>
+      <div class="stat"><b>No code</b><span>GTM template does the work</span></div>
+      <div class="stat"><b>Guide 4</b><span>of the GTM series</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Why it matters</span>
+        <h2 class="h2">What Meta Pixel <em>does for you.</em></h2>
+      </div>
+      <p class="lead">The Pixel is the bridge between your website and your Meta ad campaigns.</p>
+    </div>
+    <div class="sk-notes">
+      <div class="focus"><span class="n">01</span><h3>Tracks what visitors do after clicking your ad</h3><p>When someone clicks your Facebook or Instagram ad, the Pixel records what they do on your website: which pages they visit, whether they submit a form, whether they call. Without it, Meta only knows someone clicked, not what happened next.</p></div>
+      <div class="focus"><span class="n">02</span><h3>Helps Meta show your ads to the right people</h3><p>Once Meta knows which visitors actually enquired or bought, it can find more people like them. This is <b>conversion optimisation</b>. Without the Pixel, Meta can only optimise for clicks, not results.</p></div>
+      <div class="focus"><span class="n">03</span><h3>Lets you retarget website visitors</h3><p>Someone visited your pricing page but didn't enquire? The Pixel lets you create a <b>Custom Audience</b> of those visitors and show them a follow-up ad. This is retargeting, and it only works with the Pixel installed.</p></div>
+      <div class="focus"><span class="n">04</span><h3>Gives you real numbers, not guesses</h3><p>With the Pixel, your Meta Ads Manager shows which campaigns, ad sets and ads are actually generating enquiries. Without it, you are spending money with no way to know what is working.</p></div>
+    </div>
+
+    <h3 style="font-size:clamp(22px,2.4vw,28px);margin-top:56px;margin-bottom:8px;text-align:center">How it works, <em>visually.</em></h3>
+    <p style="text-align:center;color:var(--muted);margin-bottom:0">The journey from ad click to recorded conversion.</p>
+    <div class="pixel-flow">
+      <div class="pixel-flow-step"><b>Clicks your ad</b><span>Facebook or Instagram</span></div>
+      <div class="pixel-flow-arrow">→</div>
+      <div class="pixel-flow-step"><b>Lands on your site</b><span>Your website</span></div>
+      <div class="pixel-flow-arrow">→</div>
+      <div class="pixel-flow-step highlight"><b>Pixel fires PageView</b><span>Meta records the visit</span></div>
+      <div class="pixel-flow-arrow">→</div>
+      <div class="pixel-flow-step"><b>Submits form</b><span>Enquiry or purchase</span></div>
+      <div class="pixel-flow-arrow">→</div>
+      <div class="pixel-flow-step highlight"><b>Pixel fires Lead</b><span>Meta records the conversion</span></div>
+      <div class="pixel-flow-arrow">→</div>
+      <div class="pixel-flow-step"><b>You see it</b><span>In Ads Manager reports</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Before you start</span>
+        <h2 class="h2">What you need <em>ready.</em></h2>
+      </div>
+      <p class="lead">Tick off what you already have.</p>
+    </div>
+    <div class="sk-credit" style="margin-top:0;display:grid;gap:14px">
+      <label style="display:flex;gap:14px;align-items:flex-start;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;margin:0"><input type="checkbox" style="-webkit-appearance:checkbox;appearance:auto;accent-color:#FF5A1F;width:22px;height:22px;padding:0;margin:1px 0 0;border:0;flex:none"><span><b>Google Tag Manager installed on your website.</b> If not, follow <a href="/resources/google-tag-manager/setup/">Guide 1: GTM setup</a> first.</span></label>
+      <label style="display:flex;gap:14px;align-items:flex-start;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;margin:0"><input type="checkbox" style="-webkit-appearance:checkbox;appearance:auto;accent-color:#FF5A1F;width:22px;height:22px;padding:0;margin:1px 0 0;border:0;flex:none"><span><b>A Meta Business Suite account</b> (business.facebook.com) with your Facebook Page and Instagram account connected.</span></label>
+      <label style="display:flex;gap:14px;align-items:flex-start;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;margin:0"><input type="checkbox" style="-webkit-appearance:checkbox;appearance:auto;accent-color:#FF5A1F;width:22px;height:22px;padding:0;margin:1px 0 0;border:0;flex:none"><span><b>A Meta Pixel already created.</b> If you haven't made one yet: open <b>Meta Events Manager</b>, click <b>Connect Data Sources</b>, choose <b>Web</b>, then <b>Meta Pixel</b>, and give it a name. Meta creates the Pixel and gives you a Pixel ID.</span></label>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="steps">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Step by step</span>
+        <h2 class="h2">From Pixel ID to <em>working tracking.</em></h2>
+      </div>
+      <p class="lead">Follow these steps in order. The whole process takes about 10 minutes.</p>
+    </div>
+  </div>
+</section>
+<section style="padding-top:72px">
+  <div class="wrap">
+    <ol class="sk-steps">
+      <li>
+        <h3>Get your Pixel ID from Meta Events Manager</h3>
+        <p>Open <b>Meta Events Manager</b> (business.facebook.com/events_manager). In the left panel, click <b>Data Sources</b>. Select your Pixel from the list. Click <b>Settings</b>.</p>
+        <p>Near the top of the Settings page you will see your <b>Pixel ID</b>. It is a long number, usually 15 to 16 digits. Copy it. You will paste it into GTM in a moment.</p>
+        <div class="sk-credit"><strong>Can't find your Pixel?</strong> If Data Sources is empty, you need to create one first. Click <b>Connect Data Sources</b> → <b>Web</b> → <b>Meta Pixel</b> → give it a name → <b>Create</b>. Then come back to Settings to get the ID.</div>
+      </li>
+      <li>
+        <h3>Create a new tag in GTM</h3>
+        <p>Open <b>Google Tag Manager</b> (tagmanager.google.com) and go to your website's container. In the left menu, click <b>Tags</b>, then click <b>New</b>.</p>
+        <p>Name the tag something clear, like <b>Meta Pixel - PageView</b>. The name is only for you; it does not affect tracking.</p>
+      </li>
+      <li>
+        <h3>Find the Meta Pixel template</h3>
+        <p>Click the <b>Tag Configuration</b> area. GTM shows a list of built-in tag types. The Meta Pixel is not in this built-in list.</p>
+        <p>Scroll to the bottom and click <b>"Discover more tag types in the Community Template Gallery"</b>. This opens a gallery of templates made by other companies, including Meta.</p>
+        <p>Search for <b>Meta Pixel</b>. You will see the official template by <b>Meta</b>. Select it and click <b>Add to workspace</b>.</p>
+        <div class="sk-credit"><strong>Two templates, pick the right one.</strong> You may also see an older template called "Facebook Pixel" by facebookarchive. Use the newer <b>Meta Pixel</b> template by Meta instead. It is the officially maintained version.</div>
+      </li>
+      <li>
+        <h3>Enter your Pixel ID</h3>
+        <p>The template opens with a configuration form. In the <b>Pixel ID</b> field, paste the number you copied from Meta Events Manager.</p>
+        <p>Under <b>Event Name</b>, select <b>Standard</b> and choose <b>PageView</b> from the dropdown. This is the base event that fires every time someone visits any page on your website.</p>
+      </li>
+      <li>
+        <h3>Set the trigger to All Pages</h3>
+        <p>Click the <b>Triggering</b> area below the tag configuration. Select <b>All Pages</b>. This means the Pixel will fire on every page of your website.</p>
+        <p>Click <b>Save</b>.</p>
+      </li>
+      <li>
+        <h3>Preview and test with Tag Assistant</h3>
+        <p>Click <b>Preview</b> in the top-right corner of GTM. Enter your website URL and click <b>Connect</b>.</p>
+        <p>GTM opens two windows: <b>Tag Assistant</b> in one tab and your website in another. Browse your website normally. In Tag Assistant, look for your <b>Meta Pixel - PageView</b> tag under "Tags Fired" on each page.</p>
+        <ul>
+          <li>If the tag appears under <b>"Tags Fired"</b>: it is working.</li>
+          <li>If it appears under <b>"Tags Not Fired"</b>: check the trigger (should be All Pages) and the Pixel ID (must match exactly).</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Test with Meta's own tools</h3>
+        <p>GTM's Tag Assistant confirms the tag fires, but you also want to confirm Meta is receiving the data.</p>
+        <p><b>Option A — Meta Events Manager:</b> Go to Events Manager → <b>Test Events</b> tab. Enter your website URL and click <b>Open Website</b>. Browse your site. Events should appear in the Test Events panel as they fire.</p>
+        <p><b>Option B — Meta Pixel Helper:</b> Install the free <b>Meta Pixel Helper</b> Chrome extension. Visit your website and click the extension icon. It shows which Pixel events fired on that page and flags any errors.</p>
+        <div class="sk-credit"><strong>Both tools are useful.</strong> Tag Assistant shows whether GTM sent the tag. Meta's Test Events and Pixel Helper show whether Meta received it. Use both to be sure.</div>
+      </li>
+      <li>
+        <h3>Publish the container</h3>
+        <p>Back in GTM, click <b>Submit</b> in the top-right corner. Add a version name like <b>"Added Meta Pixel - PageView"</b> and click <b>Publish</b>.</p>
+        <p>The Pixel is now live. Meta will start collecting data from your website visitors.</p>
+        <div class="sk-credit"><strong>It takes time.</strong> Meta may need a few hours to show data in Events Manager after you publish. If you tested in Preview Mode and it worked, the setup is correct. Give it time.</div>
+      </li>
+      <li id="lead-event">
+        <h3>Add a Lead event tag for conversions</h3>
+        <p>The PageView tag tells Meta who visited. But to track enquiries, you need a second tag for the <b>Lead</b> event.</p>
+        <p>Go to <b>Tags → New</b>. Name it <b>Meta Pixel - Lead</b>. Click Tag Configuration, choose the same <b>Meta Pixel</b> template from your workspace (it is already there, no need to search the gallery again).</p>
+        <p>Enter the same <b>Pixel ID</b>. Under Event Name, select <b>Standard</b> and choose <b>Lead</b>.</p>
+        <p>For the trigger, you have two common options:</p>
+        <ul>
+          <li><b>Thank-you page:</b> If your form redirects to a thank-you page (like <code>/thank-you/</code>), create a trigger of type <b>Page View</b> that fires when <b>Page Path equals /thank-you/</b>.</li>
+          <li><b>Form submission:</b> If the form stays on the same page, create a trigger of type <b>Form Submission</b>. You may need to enable the built-in <b>Form Submission</b> trigger variable first (Variables → Configure → tick Form Submission).</li>
+        </ul>
+        <p>Save, Preview, test, then Publish.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="events" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Beyond PageView</span>
+        <h2 class="h2">Standard events <em>explained.</em></h2>
+      </div>
+      <p class="lead">Meta has predefined event names for common actions. Use them so Meta knows what the action means.</p>
+    </div>
+    <p style="color:var(--muted);font-size:17px;margin-bottom:8px">Each event is a separate tag in GTM, all using the same Meta Pixel template with the same Pixel ID. You change the event name and the trigger.</p>
+    <div class="event-cards">
+      <div class="event-card"><b>PageView</b><span>Every page visit. Fires on All Pages. You set this up in the guide above.</span></div>
+      <div class="event-card"><b>Lead</b><span>Someone submitted an enquiry form. Fires on form submit or thank-you page.</span></div>
+      <div class="event-card"><b>Contact</b><span>Someone clicked a phone number, email or WhatsApp link. Fires on specific link clicks.</span></div>
+      <div class="event-card"><b>ViewContent</b><span>Someone viewed a key page, like a product or service page. Fires on specific page views.</span></div>
+      <div class="event-card"><b>AddToCart</b><span>Someone added a product to cart. For ecommerce sites. Fires on the add-to-cart action.</span></div>
+      <div class="event-card"><b>Purchase</b><span>Someone completed a purchase. For ecommerce. Fires on the order confirmation page.</span></div>
+    </div>
+    <div class="sk-credit" style="margin-top:28px"><strong>Start simple.</strong> For most service businesses (clinics, B2B, local businesses), you need just two events: <b>PageView</b> on all pages and <b>Lead</b> on form submissions. Add more events only when you need them.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Advanced</span>
+        <h2 class="h2">What about Conversions <em>API?</em></h2>
+      </div>
+    </div>
+    <div class="sk-notes" style="grid-template-columns:1fr 1fr">
+      <div class="focus">
+        <span class="n" style="font-size:20px">Pixel</span>
+        <h3>Browser-side tracking</h3>
+        <p>The Pixel code runs in the visitor's browser. It is easy to set up (you just did it). But ad blockers and browser privacy settings can block it, which means some conversions go unrecorded.</p>
+      </div>
+      <div class="focus">
+        <span class="n" style="font-size:20px">CAPI</span>
+        <h3>Server-side tracking</h3>
+        <p>Conversions API sends the same data from your server instead of the browser. Ad blockers cannot stop it. It is more reliable, but setting it up needs <b>developer help</b> or a partner integration (some CRMs and form tools offer it).</p>
+      </div>
+    </div>
+    <div class="sk-credit" style="margin-top:20px"><strong>Start with the Pixel.</strong> It works well on its own and is what most small businesses use. When your monthly ad spend grows and you want more accurate attribution data, ask a developer to add Conversions API alongside the Pixel. Meta recommends using both together for the best results.</div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Quick checklist</span>
+        <h2 class="h2">Before you close <em>this tab.</em></h2>
+      </div>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Check</th><th>Where</th><th>Expected result</th></tr></thead>
+      <tbody>
+        <tr><td>Meta Pixel - PageView tag fires on every page</td><td>GTM Preview → Tag Assistant</td><td>Tag appears under "Tags Fired" on all pages</td></tr>
+        <tr><td>Meta receives the PageView event</td><td>Meta Events Manager → Test Events</td><td>PageView event appears when you browse your site</td></tr>
+        <tr><td>Lead event fires on form submit</td><td>GTM Preview → submit a test form</td><td>Meta Pixel - Lead tag fires on form submission or thank-you page</td></tr>
+        <tr><td>Meta receives the Lead event</td><td>Meta Events Manager → Test Events</td><td>Lead event appears after form submission</td></tr>
+        <tr><td>No errors in Pixel Helper</td><td>Meta Pixel Helper Chrome extension</td><td>Green icon, no error messages</td></tr>
+        <tr><td>Container is published</td><td>GTM → Submit → Publish</td><td>Version number goes up by one</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">Questions</span>
+      <h2 class="h2">Common <em>doubts.</em></h2>
+    </div>
+    <div class="faq">
+      <details open><summary>What is Meta Pixel?</summary><p>Meta Pixel is a small piece of tracking code from Meta that records what happens on your website after someone clicks your Facebook or Instagram ad. It helps Meta optimise your ads by showing them to people most likely to take action, and it lets you create retargeting audiences of people who visited your site.</p></details>
+      <details><summary>Where do I find my Pixel ID?</summary><p>Open Meta Events Manager, click Data Sources on the left, select your Pixel, then click Settings. The Pixel ID is a long number, usually 15 to 16 digits. Copy it exactly as shown.</p></details>
+      <details><summary>Do I need both PageView and Lead events?</summary><p>PageView fires on every page and tells Meta who visited your site. Lead or Contact fires only when someone takes a specific action, like submitting a form. You need both: PageView for retargeting audiences, and Lead or Contact for conversion optimisation so Meta can find more people like those who enquired.</p></details>
+      <details><summary>Can I install Meta Pixel without GTM?</summary><p>Yes, by adding the Pixel base code directly to your website's head section. But GTM makes it easier to manage, especially if you also run Google Analytics and Google Ads tracking. With GTM you change tags in one dashboard instead of editing website code each time.</p></details>
+      <details><summary>What is the Meta Pixel Helper?</summary><p>Meta Pixel Helper is a free Chrome extension by Meta. It shows you whether the Pixel is working on any page you visit, which events are firing and whether there are errors. It is useful for testing alongside GTM's Preview Mode.</p></details>
+      <details><summary>What about Conversions API (CAPI)?</summary><p>Conversions API sends event data from your server instead of the visitor's browser. It is more reliable because ad blockers cannot stop it. But setting it up needs developer help or a partner integration. Start with the Pixel first; add CAPI later when your ad spend grows and you want more accurate data.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h3 style="font-size:clamp(18px,1.6vw,20px);margin-bottom:16px">Other guides in this series</h3>
+    <ul style="color:var(--muted);font-size:17px;padding-left:1.2em">
+      <li><a href="/resources/google-tag-manager/">Google Tag Manager guides</a> — the hub page with all four guides</li>
+      <li><a href="/resources/google-tag-manager/setup/">Guide 1: How to set up GTM on your website</a></li>
+      <li><a href="/resources/google-tag-manager/google-analytics/">Guide 2: How to set up GA4 with GTM</a></li>
+      <li><a href="/resources/google-tag-manager/google-ads-conversion-tracking/">Guide 3: Google Ads conversion tracking with GTM</a></li>
+    </ul>
+    <h3 style="font-size:clamp(18px,1.6vw,20px);margin:28px 0 16px">Related reading</h3>
+    <ul style="color:var(--muted);font-size:17px;padding-left:1.2em">
+      <li><a href="/services/meta-ads/">Meta Ads service</a> — how I set up and manage Meta Ads for clients</li>
+      <li><a href="/blog/meta-ads-vs-google-ads-for-clinics-in-kerala/">Meta Ads vs Google Ads for clinics</a> — which platform to start with</li>
+      <li><a href="/blog/whatsapp-ads-vs-lead-forms-clinic-case-study/">WhatsApp ads vs lead forms</a> — a case study where conversion tracking mattered</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-block">
+      <h2>Running Meta Ads and need help with <em>tracking?</em></h2>
+      <a href="/contact/" class="btn">Book a consultation <svg><use href="/assets/icons.svg#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div><p style="max-width:340px">Digital marketer from Palakkad, Kerala. B2B and healthcare marketing for brands in India and the GCC.</p><p class="foot-phone">Call or WhatsApp: <a href="tel:+917907678846">+91 79076 78846</a></p></div>
+      <nav>
+        <div><p class="fh">Pages</p><a href="/services/">Services</a><br><a href="/portfolio/">Portfolio</a><br><a href="/about/">About</a><br><a href="/blog/">Blog</a><br><a href="/resources/">Resources</a><br><a href="/contact/">Contact</a></div>
+        <div><p class="fh">Follow</p><a href="https://www.linkedin.com/in/mohammedsafwan-/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#in"/></svg>LinkedIn</a><br><a href="https://www.instagram.com/saf.wan_here/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#ig"/></svg>Instagram</a><br><a href="https://www.youtube.com/@safwan.99" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#yt"/></svg>YouTube</a><br><a href="https://www.facebook.com/marketingwithsafwan/" target="_blank" rel="noopener"><svg class="si"><use href="/assets/icons.svg#fb"/></svg>Facebook</a></div>
+      </nav>
+    </div>
+    <div class="wordmark">Safwan<em>.</em></div>
+    <div class="foot-bottom"><span>© <span class="yr"></span> Mohammed Safwan · <a href="/privacy-policy/">Privacy policy</a></span><span>Palakkad · Kerala · India</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/917907678846" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
+
+<script src="/assets/main.js?v=14"></script>
+</body>
+</html>

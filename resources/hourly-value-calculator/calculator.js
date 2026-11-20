@@ -67,6 +67,19 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     return parseInt(String(s).replace(/,/g, '').replace(/[^\d]/g, ''), 10) || 0;
   }
 
+  function formatTime(hrs, hoursPerDay) {
+    var days = hrs / hoursPerDay;
+    if (days < 1.5) return '';
+    if (days < 30) return Math.round(days) + ' days';
+    var months = days / 30;
+    if (months < 12) {
+      var m = Math.round(months * 10) / 10;
+      return (m % 1 === 0 ? String(m) : m.toFixed(1)) + (m === 1 ? ' month' : ' months');
+    }
+    var y = Math.round((months / 12) * 10) / 10;
+    return (y % 1 === 0 ? String(y) : y.toFixed(1)) + (y === 1 ? ' year' : ' years');
+  }
+
   /* ── Live formatting for salary field ─────────────────────── */
 
   salaryInput.addEventListener('input', function () {
@@ -254,11 +267,13 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
       } else {
         hrsStr = String(Math.round(hrs));
       }
+      var timeStr = formatTime(hrs, H);
       html += '<div class="hv-compare-item">' +
         '<span class="hv-ci-emoji">' + item.emoji + '</span>' +
         '<span class="hv-ci-name">' + item.name + '</span>' +
         '<span class="hv-ci-price">₹' + formatIndian(item.price) + '</span>' +
         '<span class="hv-ci-hours">' + hrsStr + ' hr</span>' +
+        (timeStr ? '<span class="hv-ci-time">' + timeStr + '</span>' : '') +
         '</div>';
     }
     compareList.innerHTML = html;

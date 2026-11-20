@@ -298,7 +298,7 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
 
   function getShareMessage() {
     var val = hourlyEl.textContent;
-    return 'എന്റെ ഒരു മണിക്കൂറിന്റെ വില ' + val + ' ആണ് 😅 നിങ്ങളുടേത് എത്രയാണെന്ന് നോക്ക് 👉 ' + PAGE_URL;
+    return 'എന്റെ ഒരു മണിക്കൂർ വരുമാനം ' + val + ' ആണ് 😅 നിങ്ങളുടേത് എത്രയാണെന്ന് നോക്ക് 👉 ' + PAGE_URL;
   }
 
   $('share-whatsapp').addEventListener('click', function () {

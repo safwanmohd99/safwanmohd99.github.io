@@ -12,13 +12,13 @@ var TIER_MESSAGES = [
 ];
 
 var COMPARISONS = [
-  { emoji: '☕', name: 'ഒരു ചായ + പഴംപൊരി',  price: 30 },
-  { emoji: '🍗', name: 'ഒരു biryani',          price: 250 },
-  { emoji: '🎬', name: 'Movie + popcorn',       price: 600 },
-  { emoji: '👟', name: 'ഒരു നല്ല ഷൂ',          price: 3000 },
+  { emoji: '☕', name: 'ഒരു ചായ + പഴംപൊരി',  price: 25 },
+  { emoji: '🍗', name: 'ഒരു biryani',          price: 200 },
+  { emoji: '🎬', name: 'Movie + popcorn',       price: 250 },
+  { emoji: '👟', name: 'ഒരു നല്ല ഷൂ',          price: 2500 },
   { emoji: '🏖️', name: 'ഒരു Goa trip',          price: 15000 },
   { emoji: '📱', name: 'പുതിയ iPhone',          price: 80000 },
-  { emoji: '🏍️', name: 'പുതിയ bike',            price: 120000 }
+  { emoji: '🏍️', name: 'പുതിയ bike',            price: 200000 }
 ];
 
 var PAGE_URL = 'https://safwandigital.com/hourly/';

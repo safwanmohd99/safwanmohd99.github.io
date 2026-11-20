@@ -21,7 +21,7 @@ var COMPARISONS = [
   { emoji: '🏍️', name: 'പുതിയ bike',            price: 200000 }
 ];
 
-var PAGE_URL = 'https://safwandigital.com/hourly/';
+var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
 
 /* ── END CONFIG ────────────────────────────────────────────── */
 

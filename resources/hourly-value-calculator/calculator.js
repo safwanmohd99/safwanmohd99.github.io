@@ -1,24 +1,137 @@
 /* Hourly Value Calculator — all logic runs in the browser.
    Nothing is sent, stored or saved anywhere. */
 
-/* ── EDITABLE CONFIG ───────────────────────────────────────── */
+/* ── CURRENCY & COMPARISON CONFIG ─────────────────────────── */
+
+var CURRENCIES = {
+  INR: {
+    symbol: '₹', toINR: 1, format: 'indian', placeholder: '25,000', maxSalary: 10000000,
+    items: [
+      { emoji: '☕', name: 'ഒരു ചായ + പഴംപൊരി', price: 25 },
+      { emoji: '🍗', name: 'ഒരു biryani', price: 200 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 250 },
+      { emoji: '👟', name: 'ഒരു നല്ല ഷൂ', price: 2500 },
+      { emoji: '🏖️', name: 'ഒരു Goa trip', price: 15000 },
+      { emoji: '📱', name: 'പുതിയ iPhone', price: 80000 },
+      { emoji: '🏍️', name: 'പുതിയ bike', price: 200000 }
+    ]
+  },
+  AED: {
+    symbol: 'د.إ', toINR: 23, format: 'western', placeholder: '5,000', maxSalary: 500000,
+    items: [
+      { emoji: '☕', name: 'Karak chai', price: 2 },
+      { emoji: '🍗', name: 'Shawarma plate', price: 15 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 55 },
+      { emoji: '👟', name: 'Good shoes', price: 300 },
+      { emoji: '🏖️', name: 'Desert safari', price: 200 },
+      { emoji: '📱', name: 'New iPhone', price: 4500 },
+      { emoji: '🚗', name: 'Used car', price: 25000 }
+    ]
+  },
+  SAR: {
+    symbol: 'ر.س', toINR: 22, format: 'western', placeholder: '5,000', maxSalary: 500000,
+    items: [
+      { emoji: '☕', name: 'Chai', price: 3 },
+      { emoji: '🍗', name: 'Shawarma plate', price: 15 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 55 },
+      { emoji: '👟', name: 'Good shoes', price: 300 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 2000 },
+      { emoji: '📱', name: 'New iPhone', price: 4500 },
+      { emoji: '🚗', name: 'Used car', price: 30000 }
+    ]
+  },
+  QAR: {
+    symbol: 'ر.ق', toINR: 23, format: 'western', placeholder: '5,000', maxSalary: 500000,
+    items: [
+      { emoji: '☕', name: 'Karak chai', price: 3 },
+      { emoji: '🍗', name: 'Shawarma plate', price: 15 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 55 },
+      { emoji: '👟', name: 'Good shoes', price: 350 },
+      { emoji: '🏖️', name: 'Desert safari', price: 250 },
+      { emoji: '📱', name: 'New iPhone', price: 4500 },
+      { emoji: '🚗', name: 'Used car', price: 30000 }
+    ]
+  },
+  OMR: {
+    symbol: 'ر.ع', toINR: 218, format: 'western', placeholder: '800', maxSalary: 50000,
+    items: [
+      { emoji: '☕', name: 'Coffee + snack', price: 1 },
+      { emoji: '🍗', name: 'Restaurant meal', price: 3 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 5 },
+      { emoji: '👟', name: 'Good shoes', price: 30 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 150 },
+      { emoji: '📱', name: 'New iPhone', price: 500 },
+      { emoji: '🚗', name: 'Used car', price: 3000 }
+    ]
+  },
+  KWD: {
+    symbol: 'د.ك', toINR: 273, format: 'western', placeholder: '600', maxSalary: 40000,
+    items: [
+      { emoji: '☕', name: 'Coffee + snack', price: 1 },
+      { emoji: '🍗', name: 'Restaurant meal', price: 2 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 4 },
+      { emoji: '👟', name: 'Good shoes', price: 25 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 120 },
+      { emoji: '📱', name: 'New iPhone', price: 400 },
+      { emoji: '🚗', name: 'Used car', price: 2500 }
+    ]
+  },
+  BHD: {
+    symbol: 'د.ب', toINR: 223, format: 'western', placeholder: '700', maxSalary: 50000,
+    items: [
+      { emoji: '☕', name: 'Coffee + snack', price: 1 },
+      { emoji: '🍗', name: 'Restaurant meal', price: 3 },
+      { emoji: '🎬', name: 'Movie + popcorn', price: 5 },
+      { emoji: '👟', name: 'Good shoes', price: 30 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 150 },
+      { emoji: '📱', name: 'New iPhone', price: 450 },
+      { emoji: '🚗', name: 'Used car', price: 3000 }
+    ]
+  },
+  USD: {
+    symbol: '$', toINR: 84, format: 'western', placeholder: '3,000', maxSalary: 200000,
+    items: [
+      { emoji: '☕', name: 'Coffee', price: 5 },
+      { emoji: '🍗', name: 'Lunch out', price: 15 },
+      { emoji: '🎬', name: 'Movie night', price: 25 },
+      { emoji: '👟', name: 'Good shoes', price: 150 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 800 },
+      { emoji: '📱', name: 'New iPhone', price: 1200 },
+      { emoji: '🚗', name: 'Used car', price: 8000 }
+    ]
+  },
+  EUR: {
+    symbol: '€', toINR: 90, format: 'western', placeholder: '3,000', maxSalary: 200000,
+    items: [
+      { emoji: '☕', name: 'Coffee', price: 4 },
+      { emoji: '🍗', name: 'Lunch out', price: 12 },
+      { emoji: '🎬', name: 'Movie night', price: 20 },
+      { emoji: '👟', name: 'Good shoes', price: 130 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 600 },
+      { emoji: '📱', name: 'New iPhone', price: 1100 },
+      { emoji: '🚗', name: 'Used car', price: 6000 }
+    ]
+  },
+  GBP: {
+    symbol: '£', toINR: 105, format: 'western', placeholder: '2,500', maxSalary: 200000,
+    items: [
+      { emoji: '☕', name: 'Coffee', price: 4 },
+      { emoji: '🍗', name: 'Lunch out', price: 12 },
+      { emoji: '🎬', name: 'Movie night', price: 18 },
+      { emoji: '👟', name: 'Good shoes', price: 100 },
+      { emoji: '🏖️', name: 'Weekend trip', price: 500 },
+      { emoji: '📱', name: 'New iPhone', price: 1000 },
+      { emoji: '🚗', name: 'Used car', price: 5000 }
+    ]
+  }
+};
 
 var TIER_MESSAGES = [
-  { max: 75,      msg: 'ഒരു മണിക്കൂർ പണിയെടുത്താൽ ഒരു ചായയും പഴംപൊരിയും കഴിഞ്ഞ് ബാക്കി ചില്ലറ 😅' },
-  { max: 149,     msg: 'ഒരു biryani വാങ്ങാൻ ഏകദേശം രണ്ട് മണിക്കൂർ പണി 🍗' },
-  { max: 299,     msg: 'Not bad! പക്ഷേ boss-ന്റെ \'10 മിനിറ്റ് കൂടി\' ഇപ്പോഴും free ആണ് 😏' },
-  { max: 599,     msg: 'നിങ്ങളുടെ ഒരു meeting-ന് നല്ല വിലയുണ്ട്. Email-ൽ തീർക്കാൻ പറ 😎' },
-  { max: Infinity, msg: 'നിങ്ങളുടെ സമയം വിലപ്പെട്ടതാണ്. ഈ page കണ്ടിരുന്ന സമയത്തിനും വിലയുണ്ട് 😂' }
-];
-
-var COMPARISONS = [
-  { emoji: '☕', name: 'ഒരു ചായ + പഴംപൊരി',  price: 25 },
-  { emoji: '🍗', name: 'ഒരു biryani',          price: 200 },
-  { emoji: '🎬', name: 'Movie + popcorn',       price: 250 },
-  { emoji: '👟', name: 'ഒരു നല്ല ഷൂ',          price: 2500 },
-  { emoji: '🏖️', name: 'ഒരു Goa trip',          price: 15000 },
-  { emoji: '📱', name: 'പുതിയ iPhone',          price: 80000 },
-  { emoji: '🏍️', name: 'പുതിയ bike',            price: 200000 }
+  { maxINR: 75,       msg: 'ഒരു മണിക്കൂർ പണിയെടുത്താൽ ഒരു ചായയും പഴംപൊരിയും കഴിഞ്ഞ് ബാക്കി ചില്ലറ 😅' },
+  { maxINR: 149,      msg: 'ഒരു biryani വാങ്ങാൻ ഏകദേശം രണ്ട് മണിക്കൂർ പണി 🍗' },
+  { maxINR: 299,      msg: 'Not bad! പക്ഷേ boss-ന്റെ \'10 മിനിറ്റ് കൂടി\' ഇപ്പോഴും free ആണ് 😏' },
+  { maxINR: 599,      msg: 'നിങ്ങളുടെ ഒരു meeting-ന് നല്ല വിലയുണ്ട്. Email-ൽ തീർക്കാൻ പറ 😎' },
+  { maxINR: Infinity, msg: 'നിങ്ങളുടെ സമയം വിലപ്പെട്ടതാണ്. ഈ page കണ്ടിരുന്ന സമയത്തിനും വിലയുണ്ട് 😂' }
 ];
 
 var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
@@ -28,31 +141,34 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
 (function () {
   var $ = function (id) { return document.getElementById(id); };
 
-  var salaryInput   = $('salary');
-  var daysInput     = $('days');
-  var hoursInput    = $('hours');
-  var leaveInput    = $('leave');
-  var travelInput   = $('travel');
-  var resultsEl     = $('results');
-  var hourlyEl      = $('hourly-value');
-  var perMinEl      = $('per-minute');
-  var realCard      = $('real-hourly-card');
-  var realEl        = $('real-hourly-value');
-  var leaveCutCard  = $('leave-cut-card');
-  var leaveCutText  = $('leave-cut-text');
-  var monthEarnCard = $('monthly-earning-card');
-  var monthEarnText = $('monthly-earning-text');
-  var tierEl        = $('tier-message');
-  var compareList   = $('compare-list');
+  var currencySelect = $('currency');
+  var currencyPrefix = $('currency-prefix');
+  var salaryInput    = $('salary');
+  var daysInput      = $('days');
+  var hoursInput     = $('hours');
+  var leaveInput     = $('leave');
+  var travelInput    = $('travel');
+  var resultsEl      = $('results');
+  var hourlyEl       = $('hourly-value');
+  var perMinEl       = $('per-minute');
+  var realCard       = $('real-hourly-card');
+  var realEl         = $('real-hourly-value');
+  var leaveCutCard   = $('leave-cut-card');
+  var leaveCutText   = $('leave-cut-text');
+  var monthEarnCard  = $('monthly-earning-card');
+  var monthEarnText  = $('monthly-earning-text');
+  var tierEl         = $('tier-message');
+  var compareList    = $('compare-list');
   var leaveTypeField = $('leave-type-field');
-  var toast         = $('toast');
+  var toast          = $('toast');
 
   var salaryType = 'monthly';
   var leaveType  = 'paid';
+  var currentCurrency = 'INR';
   var lastHourly = 0;
   var animFrame  = null;
 
-  /* ── Indian number formatting ─────────────────────────────── */
+  /* ── Number formatting ───────────────────────────────────── */
 
   function formatIndian(n) {
     n = Math.round(n);
@@ -63,8 +179,22 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + last3;
   }
 
-  function parseIndian(s) {
+  function formatWestern(n) {
+    n = Math.round(n);
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function formatNumber(n) {
+    var cur = CURRENCIES[currentCurrency];
+    return cur.format === 'indian' ? formatIndian(n) : formatWestern(n);
+  }
+
+  function parseNumber(s) {
     return parseInt(String(s).replace(/,/g, '').replace(/[^\d]/g, ''), 10) || 0;
+  }
+
+  function sym() {
+    return CURRENCIES[currentCurrency].symbol;
   }
 
   function formatTime(hrs, hoursPerDay) {
@@ -80,16 +210,44 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     return (y % 1 === 0 ? String(y) : y.toFixed(1)) + (y === 1 ? ' year' : ' years');
   }
 
-  /* ── Live formatting for salary field ─────────────────────── */
+  /* ── Currency change ─────────────────────────────────────── */
+
+  function updateCurrencyUI() {
+    var cur = CURRENCIES[currentCurrency];
+    currencyPrefix.textContent = cur.symbol;
+    salaryInput.placeholder = cur.placeholder;
+    var labelText = salaryType === 'monthly'
+      ? 'Salary amount (' + cur.symbol + ')'
+      : 'Daily wage (' + cur.symbol + ')';
+    document.querySelector('.hv-label[for="salary"]').textContent = labelText;
+  }
+
+  currencySelect.addEventListener('change', function () {
+    currentCurrency = this.value;
+    updateCurrencyUI();
+    var raw = salaryInput.value.replace(/,/g, '').replace(/[^\d]/g, '');
+    if (raw !== '') {
+      var num = parseInt(raw, 10);
+      var cur = CURRENCIES[currentCurrency];
+      if (num > cur.maxSalary) num = cur.maxSalary;
+      salaryInput.value = formatNumber(num);
+    }
+    lastHourly = 0;
+    calculate();
+    track('currency_change');
+  });
+
+  /* ── Live formatting for salary field ────────────────────── */
 
   salaryInput.addEventListener('input', function () {
     var raw = this.value.replace(/,/g, '').replace(/[^\d]/g, '');
     if (raw === '') { this.value = ''; calculate(); return; }
     var num = parseInt(raw, 10);
-    if (num > 10000000) num = 10000000;
+    var maxSal = CURRENCIES[currentCurrency].maxSalary;
+    if (num > maxSal) num = maxSal;
     var caret = this.selectionStart;
     var oldLen = this.value.length;
-    this.value = formatIndian(num);
+    this.value = formatNumber(num);
     var newLen = this.value.length;
     var newCaret = Math.max(0, caret + (newLen - oldLen));
     this.setSelectionRange(newCaret, newCaret);
@@ -110,9 +268,7 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
         var val = btn.dataset.value;
         if (val === 'monthly' || val === 'daily') {
           salaryType = val;
-          document.querySelector('.hv-label[for="salary"]').textContent =
-            salaryType === 'monthly' ? 'Salary amount (₹)' : 'Daily wage (₹)';
-          salaryInput.placeholder = salaryType === 'monthly' ? '25,000' : '894';
+          updateCurrencyUI();
         }
         if (val === 'paid' || val === 'unpaid') leaveType = val;
         calculate();
@@ -141,7 +297,7 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     input.addEventListener('input', function () { calculate(); });
   });
 
-  /* ── GA4 event helper (fires only if gtag exists) ─────────── */
+  /* ── GA4 event helper ────────────────────────────────────── */
 
   function track(name) {
     if (typeof gtag === 'function') gtag('event', name);
@@ -150,27 +306,20 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
   /* ── Core calculation ────────────────────────────────────── */
 
   function calculate() {
-    var S = parseIndian(salaryInput.value);
+    var S = parseNumber(salaryInput.value);
     var D = parseFloat(daysInput.value) || 0;
     var H = parseFloat(hoursInput.value) || 0;
     var L = parseFloat(leaveInput.value) || 0;
     var T = parseFloat(travelInput.value) || 0;
+    var cur = CURRENCIES[currentCurrency];
 
-    // Show/hide leave type toggle
-    if (L > 0) {
-      leaveTypeField.hidden = false;
-    } else {
-      leaveTypeField.hidden = true;
-    }
+    if (L > 0) { leaveTypeField.hidden = false; }
+    else { leaveTypeField.hidden = true; }
 
-    // Validation
     if (S < 1 || D < 1 || H < 1 || D > 31 || H > 24 || L < 0 || T < 0 || T > 8) {
-      resultsEl.hidden = true;
-      return;
+      resultsEl.hidden = true; return;
     }
-    if (salaryType === 'monthly' && S > 10000000) { resultsEl.hidden = true; return; }
-
-    // Clamp leave
+    if (salaryType === 'monthly' && S > cur.maxSalary) { resultsEl.hidden = true; return; }
     if (L >= D) { resultsEl.hidden = true; return; }
 
     var Dw = D - L;
@@ -198,33 +347,27 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
 
     if (!isFinite(hourly) || hourly <= 0) { resultsEl.hidden = true; return; }
 
-    // Real hourly (with travel)
     var realHourly = 0;
     if (T > 0) {
       realHourly = monthlyPay / (Dw * (H + T));
       if (!isFinite(realHourly) || realHourly <= 0) realHourly = 0;
     }
 
-    // Per minute
     var perMin = hourly / 60;
-
-    // Yearly working hours
-    var yearlyHours = Dw * H * 12;
-
-    // Show results
     resultsEl.hidden = false;
 
     // Animate the big number
-    animateCount(hourlyEl, lastHourly, Math.round(hourly));
-    lastHourly = Math.round(hourly);
+    var displayHourly = Math.round(hourly);
+    animateCount(hourlyEl, lastHourly, displayHourly);
+    lastHourly = displayHourly;
 
     // Per minute
-    perMinEl.textContent = 'ഒരു മിനിറ്റിന് ₹' + perMin.toFixed(2);
+    perMinEl.textContent = 'ഒരു മിനിറ്റിന് ' + sym() + perMin.toFixed(2);
 
     // Real hourly card
     if (T > 0 && realHourly > 0) {
       realCard.hidden = false;
-      realEl.textContent = '₹' + formatIndian(Math.round(realHourly));
+      realEl.textContent = sym() + formatNumber(Math.round(realHourly));
     } else {
       realCard.hidden = true;
     }
@@ -232,7 +375,7 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     // Leave cut
     if (showLeaveCut && leaveCut > 0) {
       leaveCutCard.hidden = false;
-      leaveCutText.textContent = 'Leave cut: ₹' + formatIndian(Math.round(leaveCut));
+      leaveCutText.textContent = 'Leave cut: ' + sym() + formatNumber(Math.round(leaveCut));
     } else {
       leaveCutCard.hidden = true;
     }
@@ -240,16 +383,16 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     // Monthly earning (daily mode)
     if (showMonthlyEarning) {
       monthEarnCard.hidden = false;
-      monthEarnText.textContent = 'Monthly earning: ₹' + formatIndian(Math.round(monthlyPay));
+      monthEarnText.textContent = 'Monthly earning: ' + sym() + formatNumber(Math.round(monthlyPay));
     } else {
       monthEarnCard.hidden = true;
     }
 
-    // Tier message
-    var hourlyRound = Math.round(hourly);
+    // Tier message (convert to INR equivalent for threshold comparison)
+    var hourlyINR = hourly * cur.toINR;
     var tierMsg = '';
     for (var i = 0; i < TIER_MESSAGES.length; i++) {
-      if (hourlyRound < TIER_MESSAGES[i].max || (i === TIER_MESSAGES.length - 1)) {
+      if (hourlyINR < TIER_MESSAGES[i].maxINR || (i === TIER_MESSAGES.length - 1)) {
         tierMsg = TIER_MESSAGES[i].msg;
         break;
       }
@@ -257,9 +400,10 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
     tierEl.textContent = tierMsg;
 
     // Comparison list
+    var items = cur.items;
     var html = '';
-    for (var j = 0; j < COMPARISONS.length; j++) {
-      var item = COMPARISONS[j];
+    for (var j = 0; j < items.length; j++) {
+      var item = items[j];
       var hrs = item.price / hourly;
       var hrsStr;
       if (hrs < 10) {
@@ -271,14 +415,13 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
       html += '<div class="hv-compare-item">' +
         '<span class="hv-ci-emoji">' + item.emoji + '</span>' +
         '<span class="hv-ci-name">' + item.name + '</span>' +
-        '<span class="hv-ci-price">₹' + formatIndian(item.price) + '</span>' +
+        '<span class="hv-ci-price">' + sym() + formatNumber(item.price) + '</span>' +
         '<span class="hv-ci-hours">' + hrsStr + ' hr</span>' +
         (timeStr ? '<span class="hv-ci-time">' + timeStr + '</span>' : '') +
         '</div>';
     }
     compareList.innerHTML = html;
 
-    // Track (only the event name, no input data)
     track('calculator_used');
   }
 
@@ -289,19 +432,20 @@ var PAGE_URL = 'https://safwandigital.com/resources/hourly-value-calculator/';
 
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced || from === to) {
-      el.textContent = '₹' + formatIndian(to);
+      el.textContent = sym() + formatNumber(to);
       return;
     }
 
     var duration = 400;
     var start = null;
+    var s = sym();
 
     function step(ts) {
       if (!start) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
       var ease = 1 - Math.pow(1 - progress, 3);
       var current = Math.round(from + (to - from) * ease);
-      el.textContent = '₹' + formatIndian(current);
+      el.textContent = s + formatNumber(current);
       if (progress < 1) {
         animFrame = requestAnimationFrame(step);
       }

@@ -21,6 +21,10 @@
 .hv-label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
 .hv-hint{display:block;font-family:"Noto Sans Malayalam",var(--sans);font-size:13px;color:var(--muted);margin-top:4px}
 
+/* Currency select */
+.hv-select{width:100%;padding:12px 40px 12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);font:600 16px var(--sans);color:var(--ink);outline:none;cursor:pointer;min-height:44px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
+.hv-select:focus{border-color:var(--accent)}
+
 /* Toggle (salary type, leave type) */
 .hv-toggle{display:flex;gap:0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
 .hv-tog{flex:1;padding:12px 16px;border:none;background:transparent;font-family:"Noto Sans Malayalam",var(--sans);font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;transition:background .2s,color .2s;text-align:center;min-height:44px}

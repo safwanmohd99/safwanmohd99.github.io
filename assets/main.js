@@ -245,7 +245,7 @@ document.addEventListener('click', e => {
   if (a && e.clientX) popEnquiry(e.clientX, e.clientY);
 });
 if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const LOCK = 'a.btn, .links a, .brand, a.row, a.post, .cs-card, a.extra, .direct a, .seo-chips a, summary, .pf-filter, .cs-tabs button, .theme-btn, .jump a, a.link, .foot-top a, .wa-float, .pf-jump, .sk-copy, form button, .reel, .ig-follow, .crumbs a';
+  const LOCK = 'a.btn, .links a, .brand, a.row, a.post, .cs-card, a.extra, .direct a, .seo-chips a, summary, .pf-filter, .cs-tabs button, .theme-btn, .jump a, a.link, .foot-top a, .wa-float, .pf-jump, .sk-copy, form button, .reel, .ig-follow, .crumbs a, .ck-reset, .ck-list label';
   const SKIP = 'input, textarea, select, label, dialog, .cs-lightbox';
   const box = document.createElement('div');
   box.className = 'tgt-cursor';
@@ -281,3 +281,32 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(pr
   addEventListener('scroll', wake, {passive: true});
   document.documentElement.addEventListener('mouseleave', () => root.classList.remove('tgt-on'));
 }
+
+// tick-off checklists (e.g. /resources/meta-ads-checklist/): count progress and remember ticks in this browser only
+document.querySelectorAll('[data-checklist]').forEach(list => {
+  const key = 'checklist:' + list.dataset.checklist;
+  const boxes = [...list.querySelectorAll('input[type=checkbox]')];
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) {}
+  boxes.forEach((b, i) => { b.checked = saved[i] === 1; });
+  const update = store => {
+    const done = boxes.filter(b => b.checked).length;
+    document.querySelectorAll('[data-ck-count]').forEach(el => { el.textContent = done; });
+    document.querySelectorAll('[data-ck-total]').forEach(el => { el.textContent = boxes.length; });
+    document.querySelectorAll('[data-ck-fill]').forEach(el => { el.style.width = (boxes.length ? done / boxes.length * 100 : 0) + '%'; });
+    list.querySelectorAll('.ck-group').forEach(g => {
+      const gb = [...g.querySelectorAll('input[type=checkbox]')];
+      const gd = gb.filter(b => b.checked).length;
+      const label = g.querySelector('.ck-done');
+      if (label) label.textContent = gd === gb.length ? 'Done ✓' : gd + ' of ' + gb.length;
+      g.classList.toggle('all-done', gd === gb.length);
+    });
+    if (store) { try { localStorage.setItem(key, JSON.stringify(boxes.map(b => b.checked ? 1 : 0))); } catch (e) {} }
+  };
+  list.addEventListener('change', () => update(true));
+  document.querySelectorAll('[data-ck-reset]').forEach(btn => btn.addEventListener('click', () => {
+    boxes.forEach(b => { b.checked = false; });
+    update(true);
+  }));
+  update(false);
+});
